@@ -1,0 +1,55 @@
+<header class="hero-image">
+	<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     </div>
+       <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+			<li><%= link_to "Schedule", lessons_path %></li>
+			<li><%= link_to "Projects", projects_path %></li>
+			<li><%= link_to "About", abouts_path %></li>
+			<li><%= link_to "Discussion Board", posts_path %></li>
+			<li><%= link_to "Presentations", presentations_path %></li>
+			 
+
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+
+  			<% if user_signed_in? && current_user.admin? %>
+  			<%= switch_user_select %>
+
+				<li><%= link_to "Gradebook", instructor_gradebook_path %></li>
+				<li><%= link_to "Homework", assignments_path %></li>
+  				<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+  				<li><%= link_to "Directory", users_path %></li>
+				<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+				<li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
+
+			<% elsif user_signed_in? %>
+				<li><%= link_to "Homework Center", pages_gradebook_path %></li>
+  				<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+  				<li><%= link_to "Directory", users_path %></li>
+				<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+				<li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
+
+			<% else %>
+
+				<li><%= link_to "Register", new_user_registration_path %></li>
+				<li><%= link_to "Sign In", new_user_session_path %></li>
+			<% end %>
+		</ul>
+		</div><!--navbar collapse div-->
+	</nav>
+	<div class="tagline animated slideInUp">	
+				<h1><%= link_to "tecm4400", lessons_path %></h1>
+				<h2>Advanced Information Design for Technical Communicators</h2>
+			
+		</div>
+</header>

@@ -1,0 +1,47 @@
+<div class="container">
+<% if flash[:notice] -%>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<div class="row">
+<div class="col-md-8">
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+<% end %>
+<%= link_to 'Back to All Projects', projects_path %>
+
+  <h1><%= @project.name %></h1>
+  <h3>DUE: <%= @project.due %></h3>
+
+  <h2>Description:</h2>
+  <p><%= simple_format @project.description.html_safe %></p>
+
+
+  <h2>Deliverables:</h2>
+
+  <% for deliverable in @project.deliverables %>
+        <ul><li><%= simple_format deliverable.description.html_safe %></li></ul>
+        <% end %>
+
+        <h2>Grading Criteria:</h2>
+
+  <% for rubric in @project.rubrics %>
+        <ul><li><%= rubric.description %></li></ul>
+        <% end %>
+</div>
+<div class="col-md-4 projects-right">
+    <div class="padding-right">
+
+  <h1>Related Lessons</h1>
+   <% for lesson in @project.lessons %>
+                <ul>
+                  <li>[<%= lesson.date %>] <%= link_to lesson.name, lesson_url(lesson) %>
+                    </li>
+                </ul>
+                <% end %>
+  </div>
+
+  </div>
+</div>
+      <%= link_to 'Submit Project', new_submission_path, class: 'btn btn-primary' %>
+
+</div>

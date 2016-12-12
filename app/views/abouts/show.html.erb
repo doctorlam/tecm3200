@@ -1,0 +1,43 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-8">
+		
+		  <h1><%= @about.name %></h1>
+
+		<h2>Course Description:</h2>
+		  <p><%= @about.description.html_safe %></p>
+
+	
+		  <h2>Course Materials</h2>
+		  	<% for material in @about.materials %>
+				<ul><li><%= material.description.html_safe %></li></ul>
+			<% end %>
+	</div>
+	<div class="col-md-4 projects-right">
+			<div class="padding-right">
+
+			  <h1>Vital Course Information</h1>
+
+			  <% for vital in @about.vitals %>
+					<ul><li><%= vital.description.html_safe %></li></ul>
+				<% end %>
+
+			<h1>Syllabus</h1>
+			<% if @about.document? %>
+			<ul><li><a target=_blank href=" <%= @about.document.url %>">Fall 2016 Syllabus</a></li>
+			<% else %>
+		  <h3>No syllabus uploaded yet!</h3>
+		<% end %>
+
+		
+		</div>
+	</div>
+
+<% if current_user.try(:admin?) %>
+
+<%= link_to 'Edit', edit_about_path(@about) %> |
+<% end %>
+
+<%= link_to 'Back', abouts_path %>
+</div>

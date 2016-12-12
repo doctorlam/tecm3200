@@ -1,0 +1,73 @@
+<div class="container">
+<% if flash[:notice] -%>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Back to Gradebook', instructor_gradebook_path %>
+<% end %>
+<div class="row">
+
+<h1><%= @submission.user.name %>'s Submission for <% for assignment in @submission.assignments %>
+                    "<%= link_to assignment.name, assignment_url(assignment) %>"
+                       
+                      <% end %></h1>
+  <div class="col-md-7 padding-left">
+
+          <h1 style = "text-align: center; border-bottom: none"><strong>Summary</strong></h1>
+          <% for assignment in @submission.assignments %>
+              <h3>Submission Information</h3>
+                  <ul>
+                    <li class="show-field">Due: <strong><%= assignment.deadline %></strong></li>
+          <% end %>
+                    <li class="show-field">Submitted: <strong><%= @submission.created_at.to_date %> at <%= @submission.created_at %></strong></li>
+                  </ul>
+              
+              <h3>Submission Content</h3>
+              <p class = "show-field"><%= simple_format @submission.description %></p>
+
+              <h3>Attached Submitted Document</h3>
+            <% if @submission.document? %>
+                <ul><li><a target=_blank href=" <%= @submission.document.url %>"><strong><%= @submission.document.original_filename %></strong></a></li></ul>
+                <% else %>
+                <li>No Document(s) Attached!</li>
+              <% end %>
+      </div> 
+    <div class="col-md-4 projects-right">
+      <div class="padding-right">
+            <h1 style = "text-align: center; border-bottom: none"><strong>Feedback</strong></h1>
+            <% for assignment in @submission.assignments %>
+            <h3>Grade for "<%= assignment.name %>"</h3>
+            <% end %>
+                <% if @submission.score? %>
+                  <p style = "color: green !important"><strong><%= @submission.score %>/<% for assignment in @submission.assignments %><%= assignment.score %> or <%= number_to_percentage(@submission.score.to_f * 100 / assignment.score) %><% end %></strong></p>
+      
+                <% else %>
+                 <p style = "color:red !important">This assignment is worth 
+                  <% for assignment in @submission.assignments %><%= assignment.score %> points, but it's not graded yet!<% end %></p>
+                <% end %>
+          
+              <h3>Instructor Feedback</h3>
+                <% if @submission.feedback? %>
+                    <p><strong><%= simple_format @submission.feedback %></strong></p>
+                <% else %>
+                    <p>Dr. Lam didn't leave feedback. That doesn't mean he didn't read your assignment. :)</p>
+                <% end %>
+              <h3>Attachments from Instructor</h3>
+                <% if @submission.image? %>
+                  <ul><li><a target=_blank href=" <%= @submission.image.url %>"><strong><%= @submission.image.original_filename %></strong></a></li></ul>
+                  <% else %>
+                  <li>Dr. Lam didn't attach a file. You probably did fine though.</li>
+                <% end %>
+        </div>
+      </div>
+
+</div>
+    <% if current_user.admin? %>
+      <%= render "grade" %>
+    <% end %>
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Back to Gradebook', submissions_path %>
+<% else %>
+  <%= link_to 'Back to Homework Center', pages_gradebook_path %>
+<% end %>
+</div>

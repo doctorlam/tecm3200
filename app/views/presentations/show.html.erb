@@ -1,0 +1,21 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+
+  <h1>Presentation Title: "<%= @presentation.name %>"</h1>
+  <% for @lesson in @presentation.lessons %>
+    <h3>Presented on <%= @lesson.date %></h3>
+  <% end %>
+  
+
+  <div class="video-container">
+  	<%= @presentation.file.html_safe %>
+  </div>
+  <br>
+
+<% if current_user.try(:admin?) %>
+
+	<%= link_to 'Edit', edit_presentation_path(@presentation) %> |
+	<%= link_to 'Back', presentations_path %>
+<% end %>
+</div>

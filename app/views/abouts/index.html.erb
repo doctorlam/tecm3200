@@ -1,0 +1,62 @@
+<div class="container">
+
+<% if current_user.try(:admin?) %>
+    <%= link_to 'New About', new_about_path %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>About the Course</h1>
+<% @abouts.each do |about| %>
+
+<div class="row">
+        <div class="col-md-8">
+           
+                <h2><%= about.name %></h2>
+
+      <% if current_user.try(:admin?) %>
+         <td><%= link_to 'Show', about %></td>
+         <td><%= link_to 'Edit', edit_about_path(about) %></td>
+        <td><%= link_to 'Destroy', about, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
+        <br /><br />
+        <h2>Course Description</h2>
+                <p><%= about.description %></p>
+        <h2>Course Objectives:</h2>
+        <ol>
+            <% for objective in about.objectives %>
+            <li><%= objective.content %></li>
+        <% end %>
+        </ol>
+            <h2>Course Materials</h2>
+            <% for material in about.materials %>
+                <ul><li><%= material.description %></li></ul>
+            <% end %>
+
+        </div>
+        <div class="col-md-4 projects-right">
+            <div class="padding-right">
+
+                <h1>Vital Course Information</h1>
+                  <% for vital in about.vitals %>
+                    <ul><li><%= vital.description.html_safe %></li></ul>
+                <% end %>
+
+                <h1>Syllabus and Policies</h1>
+                    <% if about.document? %>
+                    <ul><li><a target=_blank href=" <%= about.document.url %>">Fall 2016 Syllabus</a></li>
+                    <li><%= link_to "Policies", pages_policies_path %></li>
+                    <% else %>
+                  <ul><li>No syllabus uploaded yet!</li>
+                  <li><%= link_to "Course Policies", pages_policies_path %></li></ul>
+                <% end %>
+                
+
+            </div>
+        </div>
+</div>
+     
+    <% end %>
+
+</div>

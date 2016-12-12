@@ -1,0 +1,43 @@
+<div class="container">
+		<% if flash[:notice] -%>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+	<div class="row">
+		<div class="col-md-8">
+		<%= link_to 'Back', pages_gradebook_path %>
+
+
+			<h1><%= @assignment.name %></h1>
+
+			<h3>Deadline:</h3>
+		  		<h4><%= @assignment.deadline %></h4>
+			 <h3>What you Need To Do:</h3>
+			  <p><%= simple_format @assignment.description %></p>
+			  <h3>What's it worth?:</h3>
+			  <p><%= @assignment.score %> points</p>
+		<% if current_user.try(:admin?) %>
+			<br />
+		<% else %>
+			  <div class="center">
+      			<%= link_to "Submit this Assignment!", new_assignment_submission_path(@assignment), class: "btn btn-default" %>
+    			</div>
+		<% end %>
+		<br />
+		</div>
+		<div class="col-md-4 projects-right">
+			<div class="padding-right">
+			<h3>When did we talk about this?</h3>
+			 <% for lesson in @assignment.lessons %>
+                <ul>
+                  <li>[<%= lesson.date %>] <%= link_to lesson.name, lesson_url(lesson) %>
+                    </li>
+                </ul>
+                <% end %>
+             </div>
+		</div>
+	</div>
+	<% if current_user.try(:admin?) %>
+		<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
+	<% end %>
+	
+	</div>

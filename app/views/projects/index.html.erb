@@ -1,0 +1,57 @@
+<div class="container">
+
+<% if current_user.try(:admin?) %>
+    <%= link_to 'New Project', new_project_path %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Course Projects</h1>
+<% @projects.each do |project| %>
+
+<div class="row">
+        <div class="col-md-8">
+           
+                <h2><%= project.name %></h2>
+                <h3>Due: <%= project.due %></h3>
+
+                <td><%= link_to 'Show', project %></td>
+      <% if current_user.try(:admin?) %>
+         <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
+        <br /><br />
+
+                <p><%= project.description.html_safe %></p>
+
+                <h3>Deliverables</h3>
+                <% for deliverable in project.deliverables %>
+                <ul><li><%= deliverable.description.html_safe %></li></ul>
+                <% end %>
+                
+
+                <h3>Grading Criteria</h3>
+                <% for rubric in project.rubrics %>
+                <ul><li><%= rubric.description.html_safe %></li></ul>
+                <% end %>
+        </div>
+        <div class="col-md-4 projects-right">
+            <div class="padding-right">
+            <h1>Related Lessons</h1>
+              <% for lesson in project.lessons %>
+                <ul>
+                  <li>[<%= lesson.date %>] <%= link_to lesson.name, lesson_url(lesson) %>
+                    </li>
+                </ul>
+                <% end %>
+            </div>
+        </div>
+</div>
+      <%= link_to 'Submit Project', new_submission_path, class: 'btn btn-primary' %>
+
+        <hr style ="border-bottom: dotted 1px gray" />
+     
+    <% end %>
+
+</div>

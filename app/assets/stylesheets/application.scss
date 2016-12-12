@@ -1,0 +1,596 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+*= require commontator/application
+*/
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+}
+.video-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+ul.alphabet li{
+	display: inline;
+}
+.password {
+	border: 1px solid red;
+	padding:10px;
+	margin-bottom: 10px;
+}
+.padding-left {
+	background-color: #E7E7E7;
+	padding: 5px 20px 20px 20px;
+
+}
+.padding-right {
+	background: #2a2a29;
+	margin-left: 10px;
+	padding: 5px 20px 20px 20px;
+}
+.padding-right li, .padding-right p, .padding-right h4, .padding-right a {
+		color: #D1D1D1 !important;
+}
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 16px !important;
+}
+
+body {
+    margin: 0 0 300px; /* bottom = footer height */
+}
+
+.container-fluid {
+	padding: 0;
+	background: #F0F0F0;
+}
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: -40px;
+	margin-bottom: 80px;
+
+}
+
+.content-container {
+	padding: 20px;
+}
+a {
+	text-decoration: underline;
+}
+a:visited {
+	color: black;
+}
+a:hover {
+	color: white;
+}
+.show-field {
+	font-size: 1.25rem;
+	font-style: italic !important;
+}
+h1 a:hover {
+	background: transparent;
+}
+nav a, nav a:visited {
+	font-size: 0.8rem;
+	color: #99b3ab !important;
+	font-family: 'Muli', sans-serif !important;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.navbar {
+	opacity: 0.8;
+	background: #2a2a29 !important;
+	border: none;
+}
+.navbar-right {
+	padding-right:10px;
+}
+nav a:hover {
+	background: none !important;
+}
+h1 {
+	font-family: 'Open Sans Condensed', sans-serif; 
+	font-weight: 400;
+	text-transform: uppercase;
+	border-bottom: gray 1px dotted;
+	padding-bottom: 10px;
+	font-size: 2.5rem !important;
+
+}
+h2 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 2rem;
+}
+.padding-right h2 {
+	border-bottom: gray 1px dotted;
+
+}
+
+h3 {
+	font-family: 'Muli', sans-serif;
+	font-size: 1.5rem;
+}
+.show-left {
+	background-color: #E7E7E7;
+}
+.show-right, .show-right a, .show-right a:visited {
+	background: #2a2a29;
+	color: #99b3ab;
+}
+.show-right {
+	padding-bottom: 30px;
+	
+}
+p, ol, li, td {
+	font-family: 'Muli', sans-serif !important;
+	font-size: 1rem !important;
+	line-height: 1.5rem;
+}
+p {
+	margin-bottom: 1.5rem;
+}
+.first-group-form {
+	background: #BDC3C7;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.second-form-group {
+	background: #454444;
+	padding: 20px;
+		margin-bottom: 20px;
+
+}
+.third-form-group {
+	background: #BDC3C7;
+		padding: 20px;
+		margin-bottom: 20px;
+
+
+}
+.second-form-group a, .second-form-group a:visited, .second-form-group, .fourth-form-group a, .fourth-form-group a:visited, .fourth-form-group {
+	color: white !important;
+}
+.fourth-form-group {
+	background: #454444;
+	padding:20px;
+	margin-bottom: 20px;
+
+	
+}
+
+.fifth-form-group {
+	background: #BDC3C7;
+		padding: 20px;
+
+}
+
+a.add_fields, a.remove_fields {
+	float: right !important;
+	display: inline-block;
+}
+
+.form-group h2, .form-group h3 {
+	text-align: center;
+}
+.hero-image {
+	height: 400px;
+	background: image-url('hero.jpg'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	background-repeat:no-repeat;
+	background-position: center center;
+}
+
+.tagline {
+	padding-top: 60px;
+
+}
+.tagline h1 {
+	font-size: 4rem !important;
+	font-family: 'Josefin Sans', sans-serif;
+	text-align: center !important;
+	letter-spacing: 15px;
+	color: white;
+	text-transform: none;
+	border: 2px solid white;	
+	width: 50%;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-top: 20px;
+
+}
+.tagline a, .tagline a:visited {
+	color: white;
+	text-decoration: none
+}
+.tagline a:hover {
+	background: none;
+}
+.tagline h2 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-align: center;
+	color: white;
+	font-size: 1.75rem;
+	letter-spacing: 3px
+}
+
+footer {
+	background: #2a2a29;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    min-height: 300px;
+    width: 100%;
+}
+
+footer h2 {
+	font-size: 1.25rem;
+	color: #666666;
+	font-family: 'Muli';
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+footer ul li, footer a, footer a:visited {
+	color: #99b3ab;
+	font-size: 1rem;
+	text-decoration: none;
+	list-style-type: none;
+	margin-left: auto;
+}
+footer ul {
+	padding: 0;
+}
+
+.projects-right {
+	color: #99b3ab;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	padding-top: 5px
+}
+
+.projects-right a, .projects-right a:visited {
+	color: #99b3ab;
+}
+.projects-right h3 {
+	border-bottom: 1px dotted #666666;
+}
+
+.btn-primary {
+	background: transparent;
+	border: 1px solid black !important;
+	text-decoration: none;
+	color: black;
+	font-family: 'Open Sans Condensed', sans-serif;
+	text-transform: uppercase;
+}
+.btn-primary:hover {
+		background: black;
+		color:white; 
+}
+.btn {
+	font-size: 1rem;
+}
+
+.round-image-50 {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+.tiny {
+	background-color: gray;
+    border: 1px solid #DEDEDE;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    height: 35px;
+    width: 35px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+p.small {
+	font-size: 0.75rem !important;
+	margin-top: -10px;
+}
+p.small-response {
+	font-size: 0.75rem !important;
+	line-height: 0.6rem;
+	text-align: right;
+	margin-bottom: 5px !important;
+
+}
+a.small-reply {
+	font-size: 0.55rem !important;
+	line-height: 0.2rem;
+	text-align: right;
+	margin-bottom: 5px !important;
+}
+.thread {
+	background: #FCFCFC;
+	padding: 20px;
+}
+.response-container {
+
+	padding-top: 30px;
+	text-align:right;
+}
+
+.reply h3, .reply {
+	border-bottom: 1px dotted #404040;
+}
+.reply {
+	min-height: 150px;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-bottom: 20px;
+}
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.usergrades {
+	background: white;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	padding:15px;
+	margin-bottom: 20px;
+
+}
+.lower{
+  width:100%;
+  padding:20px;
+  background:transparent;
+  opacity:0.8;
+  color:black;
+  box-shadow:inset 0 0 0 1px #242424;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.lower:hover{
+  background:black;
+  color:white;
+  box-shadow:inset 0 0 0 1px white;
+}
+
+input.takeaway {
+  display:none;
+}
+
+.lower label{
+  font-family: 'Open Sans Condensed' 'sans-serif';
+  font-size:1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  width:100%;
+  color: #242424;
+}
+
+.lower label:hover{
+  cursor:pointer;
+}
+
+.overlay{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.9);
+}
+
+.overlay label{
+	width: 58px;
+	height:58px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	background: url('http://tympanus.net/Development/FullscreenOverlayStyles/img/cross.png');
+	z-index: 100;
+  cursor:pointer;
+}
+
+.overlay .overlay-container {
+	text-align: center;
+	position: relative;
+	top: 10%;
+	height: 10%;
+	-webkit-transform: translateY(-10%);
+	transform: translateY(-10%);
+	z-index: 100;
+}
+
+.overlay ol {
+	padding: 20px;
+	margin: 0 auto;
+	display: block;
+	height: 100%;
+	position: relative;
+}
+
+.overlay ol li {
+	padding-bottom: 20px;
+	text-align: left;
+	margin-left: 40px;
+
+}
+
+.overlay ol li {
+	font-weight: 300;
+	color: white !important;
+  	text-decoration:none;
+	-webkit-transition: color 0.2s;
+	transition: color 0.2s;
+  	font-family: 'Open sans condensed' !important;
+  	font-size: 1.7rem !important;
+ 	 line-height: 2rem !important;
+
+}
+h1.overlay-heading {
+	font-size: 3rem;
+	color: #99b3ab !important;
+	padding-bottom: 20px !important;
+	margin-bottom: 40px;
+
+}
+.overlay ol li a:hover,
+.overlay ol li a:focus {
+	color: #849368;
+}
+
+.lower~.overlay-hugeinc{
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+	transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+#op:checked~.overlay-hugeinc{
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.overlay-hugeinc .overlay-container {
+	-moz-perspective: 300px;
+}
+
+.overlay-hugeinc .overlay-container ol {
+	opacity: 0.4;
+	-webkit-transform: translateY(-25%) rotateX(35deg);
+	transform: translateY(-25%) rotateX(35deg);
+	-webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+#op:checked~.overlay-hugeinc .overlay-container ol {
+	opacity: 1;
+	-webkit-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+}
+
+#op:not(:checked)~.overlay-hugeinc .overlay-container ol {
+	-webkit-transform: translateY(25%) rotateX(-35deg);
+	transform: translateY(25%) rotateX(-35deg);
+}
+
+code {
+}
+@media only screen and (max-width: 1000px) {
+	body {
+    margin: 0 0 350px !important; /* bottom = footer height */
+}
+.tagline h1 {
+		width: 90%;
+	}
+.projects-right {
+	background: #2a2a29;
+
+}
+.padding-right {
+	padding: 0 0 0 0;
+}
+
+}
+@media only screen and (max-width: 900px) {
+	html {
+	font-size: 15px !important;
+	}
+	
+	.navbar a {
+	text-align: center;
+	}
+	.projects-right {
+		margin-bottom: 10px;
+	}
+	p.small-response, .response-container {
+		
+		text-align: left !important;
+		padding-top: 0px;
+
+	}
+
+}
+@media only screen and (max-width: 768px) {
+	html {
+	font-size: 14px !important;
+	}
+
+	footer {
+		text-align:center;
+	}
+	.container {
+	width: 95%;
+	}
+	.tagline h1 {
+		width: 95%;
+		font-size: 3.5rem !important;
+	}
+	.overlay, .overlay label {
+		position: static;
+		text-align: right;
+		padding: 10px;
+	}
+
+	h1.overlay-heading {
+		padding-top: 75px;
+		margin-bottom: 0px;
+	}
+	.overlay ol li {
+		margin-left: 10px;
+	}
+	
+}
+@media only screen and (max-width: 500px) {
+	html {
+	font-size: 13px !important;
+	}
+	.tagline h1 {
+		width: 90%;
+		letter-spacing: 12px;
+		padding-left: 12px;
+		font-size: 3rem !important;
+	}
+}

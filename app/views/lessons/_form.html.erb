@@ -1,0 +1,120 @@
+<%= form_for(@lesson, html: { multipart: true }) do |f| %>
+  <% if @lesson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+      <ul>
+      <% @lesson.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="first-group-form">
+     <div class="form-group">
+      <h2>Connect lesson to a project</h2>
+        <%= hidden_field_tag "lesson[project_ids][]", nil %>
+        <% Project.all.each do |project| %>
+          <%= check_box_tag "lesson[project_ids][]", project.id, @lesson.project_ids.include?(project.id), id: dom_id(project) %>
+          <%= label_tag dom_id(project), project.name %>
+          <br />
+
+        <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :week %>
+      <%= f.text_field :week, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :date %>
+      <%= f.date_select :date, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="second-form-group">
+  <h2>Learning Objectives</h2>
+  <%= f.fields_for :objectives do |builder| %>
+  <%= render 'objective_fields', f:builder %>
+
+  <% end %>
+<%= link_to_add_fields "Add Objective", f, :objectives, class: "btn btn-mini btn-info" %>
+</div>
+
+<div class="third-form-group">
+  <h2>Class Activities</h2>
+  <%= f.fields_for :classactivitys do |builder| %>
+  <%= render 'classactivity_fields', f:builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Activity", f, :classactivitys, class: "btn btn-mini btn-info" %>
+</div>
+
+<div class="fourth-form-group">
+  <h2>Readings</h2>
+  <%= f.fields_for :readings do |builder| %>
+  <%= render 'reading_fields', f:builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Reading", f, :readings, class: "btn btn-mini btn-info" %>
+</div>
+<div class="third-form-group">
+  <h2>Homework</h2>
+  <%= f.fields_for :homeworks do |builder| %>
+  <%= render 'homework_fields', f:builder %>
+  <% end %>
+  
+  <%= link_to_add_fields "Add Homework", f, :homeworks, class: "btn btn-mini btn-info" %>
+    <h2>Add Turn-in Assignment</h2>
+        <%= hidden_field_tag "lesson[assignment_ids][]", nil %>
+        <% Assignment.all.each do |assignment| %>
+          <%= check_box_tag "lesson[assignment_ids][]", assignment.id, @lesson.assignment_ids.include?(assignment.id), id: dom_id(assignment) %>
+          <%= label_tag dom_id(assignment), assignment.name %>
+          <br />
+        <% end %>
+    </div>
+
+  <div class="fourth-form-group">
+      <h2>Takeaways</h2>
+      <%= f.fields_for :takeaways do |builder| %>
+      <%= render 'takeaway_fields', f:builder %>
+      <% end %>
+      <%= link_to_add_fields "Add Takeaway", f, :takeaways, class: "btn btn-mini btn-info" %>
+</div>
+   <div class="third-form-group">
+      <h2>Slidebean Presentation?</h2>
+        <%= hidden_field_tag "lesson[presentation_ids][]", nil %>
+        <% Presentation.all.each do |presentation| %>
+          <%= check_box_tag "lesson[presentation_ids][]", presentation.id, @lesson.presentation_ids.include?(presentation.id), id: dom_id(presentation) %>
+          <%= label_tag dom_id(presentation), presentation.name %>
+          <br />
+
+        <% end %>
+    </div>
+  <div class="fourth-form-group">
+  <h2>Documents</h2>
+  <% if @lesson.document.exists? %>
+     
+      <%= f.check_box :delete_document %> Remove <%= @lesson.document.original_filename %>
+  <% else %>
+      <%= f.label :document %>
+      <%= f.file_field :document, :class => "form-control-file", class: "form-control" %>
+
+  <% end %>
+
+  <% if @lesson.image.exists? %>
+
+      <%= f.check_box :delete_image %> Remove <%= @lesson.image.original_filename %>
+    <% else %>
+    <%= f.label :image %>
+    <%= f.file_field :image, :class => "form-control-file", class: "form-control" %>
+  <% end %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Create Lesson", class: "btn btn-primary" %>
+  </div>
+<% end %>
+

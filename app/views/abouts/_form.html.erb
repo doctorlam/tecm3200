@@ -1,0 +1,58 @@
+<div class="container">
+<%= form_for(@about) do |f| %>
+  <% if @about.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@about.errors.count, "error") %> prohibited this about from being saved:</h2>
+
+      <ul>
+      <% @about.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="second-form-group">
+    <%= f.label :name %><br>
+    <%= f.text_area :name, class: "form-control" %>
+  </div>
+  <div class="third-form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="second-form-group">
+  <h2>Learning Objectives</h2>
+      <%= f.fields_for :objectives do |builder| %>
+      <%= render 'objective_fields', f:builder %>
+
+      <% end %>
+  <%= link_to_add_fields "Add Objective", f, :objectives, class: "btn btn-mini btn-info" %>
+</div>
+   <div class="third-form-group">
+    <h2>Course Materials</h2>
+        <%= f.fields_for :materials do |builder| %>
+        <%= render 'material_fields', f:builder %>
+
+    <% end %>
+      <%= link_to_add_fields "Add Material", f, :materials, class: "btn btn-mini btn-info" %>
+  </div>
+
+  <div class="fourth-form-group">
+    <h2>Vital Course Information</h2>
+        <%= f.fields_for :vitals do |builder| %>
+        <%= render 'vital_fields', f:builder %>
+
+    <% end %>
+      <%= link_to_add_fields "Add Vital Course Info", f, :vitals, class: "btn btn-mini btn-info" %>
+
+        <%= f.label :syllabus %>
+        <%= f.file_field :document, :class => "form-control-file", class: "form-control" %>
+
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

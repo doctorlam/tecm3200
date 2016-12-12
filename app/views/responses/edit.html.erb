@@ -1,0 +1,18 @@
+<div class="container">
+	<h1>Edit Reply</h1>
+	<%= simple_form_for([@post, @response]) do |f| %>
+	<%= f.text_area :comment, rows: 15, class: "form-control" %>
+	
+	       <% if @response.document.exists? %>
+      			<br>
+				<%= f.check_box :delete_document %>
+		      <%= f.label :delete_document, "Remove" %> <%= @response.document.original_filename %>
+		    <% else %>
+		    <h3>Add a file?</h3>
+	      		<%= f.file_field :document, :class => "form-control-file" %>
+		   <% end %>
+
+	<br>	<br>
+		<%= f.button :submit, class: "btn btn-primary" %>
+	<% end %>
+</div>

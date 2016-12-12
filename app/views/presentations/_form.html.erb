@@ -1,0 +1,25 @@
+<%= simple_form_for(@presentation) do |f| %>
+  <%= f.error_notification %>
+
+<div class="second-form-group">
+<h2>Add Presentation to a Lesson</h2>
+
+        <%= hidden_field_tag "presentation[lesson_ids][]", nil %>
+        <% Lesson.all.each do |lesson| %>
+          <%= check_box_tag "presentation[lesson_ids][]", lesson.id, @presentation.lesson_ids.include?(lesson.id), id: dom_id(lesson) %>
+          <%= label_tag dom_id(lesson), lesson.name %> | <%= lesson.date %>
+          <br />
+
+        <% end %>
+    </div>
+  <div class="form-inputs">
+    <%= f.input :name %>
+	    <%= f.label :file, "URL" %>
+	    <br>
+	    <%= f.text_area :file, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

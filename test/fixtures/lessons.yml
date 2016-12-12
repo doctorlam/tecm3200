@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  week: 9.99
+  date: 2016-08-09
+
+two:
+  name: MyString
+  week: 9.99
+  date: 2016-08-09

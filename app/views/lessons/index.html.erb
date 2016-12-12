@@ -1,0 +1,69 @@
+<div class="container">
+
+<% if current_user.try(:admin?) %>
+<%= link_to 'New Lesson', new_lesson_path, class: "btn btn-default" %>
+<% end %>
+<h1>Course Schedule</h1>
+
+<%= search_form_for @search do |f| %>
+<div class="field">
+  <%= f.label :name_cont, "Search Lessons" %>
+  <%= f.text_field :name_cont, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "Search", class: "btn-default btn" %></div>
+
+
+<% end %>
+<%= link_to "Clear Search", request.path, class:"cancel-button" %>
+
+<div class="table-responsive">
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th><%= sort_link @search, :week, "Week" %></th>
+      <th><%= sort_link @search, :date, "Date" %></th>
+      <th><%= sort_link @search, :name, "Name" %></th>
+      <th>Readings</th>
+      <th>Homework</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lessons.each do |lesson| %>
+      <tr>
+        <td class="week"><%= link_to lesson.week, lesson %></td>
+        <td class="date"><%= link_to lesson.date, lesson %></td>
+        <td class="name"><%= link_to [lesson.name].join(" "), lesson %></td>
+      <td>
+        <ol><% for reading in lesson.readings %><li><%= reading.content.html_safe %></li><%end%></ol>
+      </td>
+
+      <td>
+          
+            <ol>
+            <% for homework in lesson.homeworks %>
+                <li><%= homework.content.html_safe %></li>
+              <% end %>
+            <% for assignment in lesson.assignments %>  
+                <li>[Turn In] <%= link_to assignment.name, assignment_url(assignment) %></li>  
+            <% end %>
+        </ol>
+      </td>
+
+
+        <td><%= link_to 'View Lesson', lesson %></td>
+        <% if current_user.try(:admin?) %>
+        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @lessons %>
+
+</div>
+
+
+</div>

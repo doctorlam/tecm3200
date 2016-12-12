@@ -1,0 +1,97 @@
+<div class="container">
+<% if flash[:notice] -%>
+  <div class = "alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+	
+<div class="row">
+	<div class="col-md-8 show-left">
+
+	  <h1>Lesson:<%= @lesson.name %></h1>
+
+	  <h3>Week:
+	  <%= @lesson.week %></h3>
+
+
+		<h3>Date:
+	  <%= @lesson.date %></h3>
+
+		<h3>Objectives:</h3>
+		<ol>
+			<% for objective in @lesson.objectives %>
+			<li><%= objective.content %></li>
+		<% end %>
+		</ol>
+
+		<h3>In-Class Activities:</h3>
+		<ol>
+		<% for classactivity in @lesson.classactivitys.order(:created_at) %>
+		<li><%= classactivity.content.html_safe %></li>
+		<% end %>
+		</ol>
+		<h3>Lesson Attachments</h3>
+				<ul>
+				 	<% for presentation in @lesson.presentations %>
+
+			      		<li>Presentation file: <%= link_to presentation.name, presentation_url(presentation) %></li>
+					<% end %>
+				<% if @lesson.document? %>
+					<li>Presentation file: <a target=_blank href=" <%= @lesson.document.url %>"><%= @lesson.document.original_filename %></a></li>
+					
+				<% end %>
+					<% if @lesson.image? %>
+					<li>Other file(s): <a target=_blank href=" <%= @lesson.image.url %>"><%= @lesson.image.original_filename %></a></li>
+				
+				<% end %>
+				</ul>
+</div>
+	<div class="col-md-4 projects-right">
+		<div class="padding-right">
+			<h1>To Do Before Class</h1>
+				<h3>Readings:</h3>
+				<ol>
+				<% for reading in @lesson.readings %>
+				<li><%= simple_format reading.content.html_safe %></li>
+				<% end %>
+				</ol>
+				<h3>Homework:</h3>
+				<ol>
+				<% for homework in @lesson.homeworks %>
+				<li><%= simple_format homework.content.html_safe %></li>
+				<% end %>
+				 <% for assignment in @lesson.assignments %>  
+		              <li>[Turn In] <%= link_to assignment.name, assignment_url(assignment) %></li>
+		                
+		           <% end %>
+				</ol>
+				
+				<h3>Related Project(s)</h3>
+				 <% for project in @lesson.projects %>
+			      	<ul><li><%= link_to project.name, project_url(project) %></li></ul>
+			               
+			     <% end %>
+		</div>
+	</div>
+</div><!--row-->
+<div class="row">
+<input type="checkbox" id="op" class="takeaway"></input>
+		<div class="lower">
+			  <label for="op">TL;DR</label>
+		</div>
+			<div class="overlay overlay-hugeinc">
+				<label for="op"></label>
+					<div class="overlay-container">
+						<h1 class="overlay-heading">Cliffs for "<%=@lesson.name %>" on <%= @lesson.date %></h1>
+						<ol type= "1"><% for takeaway in @lesson.takeaways %><li><%= takeaway.content %></li><% end %></ol>
+					</div>
+			</div>
+
+</div>
+
+<% if current_user.try(:admin?) %>
+	<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+	<%= link_to 'Back', lessons_path %>
+<% end %>
+<%= link_to('Back to all lessons', :back) %>
+
+</div>

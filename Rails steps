@@ -1,0 +1,28 @@
+Rails steps
+
+1. rails new 
+2. rails g controller Pages schedule about
+
+--Migrations
+3. rails g scaffold entry week:decimal date:string objective:string activity:string reading:string homework:string
+4. rake db:migrate
+5. restart rails s
+
+—Nested Models—
+1. create new model “rails g model …”
+2. Create _fields.html.erb
+3. Change show and index to display new model
+4. update lessons controller new and edit
+5. add to lessons model 
+6. add to new model
+7. add model to form
+8. Add to strong params in lessons model
+
+
+—Adding links to add new objectives —
+
+* be sure to add all variables in strong_params
+
+—-Adding Admin on console—
+1. Find the user by “u = User.last
+2. “u.update_attribute :admin, 1”

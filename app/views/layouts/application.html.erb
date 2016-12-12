@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tecm3200</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>TECM 4400 - Advanced Information Design for Technical Communicators,  UNT, Lam, Fall 2016</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' %>
+     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Merriweather+Sans' %>
+     <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Josefin+Sans' %>
+      <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Muli' %>
+      <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Cardo' %>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <script type= "application/javascript" src="http://listjs.com/no-cdn/list.js"></script>
 
-  <body>
-    <%= yield %>
-  </body>
+</head>
+<body>
+
+<div class="container-fluid">
+<%= render 'layouts/header' %>
+<div class="alert">
+	<% if flash[:alert] -%>
+  <p class = "alert alert-danger"><%= flash[:alert] %></p>
+<% end %>
+</div>
+
+<%= yield %>
+
+</div>
+
+<script type ="text/javascript">
+var options = {
+  valueNames: [ 'name', 'student' ]
+};
+
+var userList = new List('users', options);
+
+$('#student').change(function () {
+    var selection = this.value; 
+
+    // filter items in the list
+    userList.filter(function (item) {
+        if (item.values().student == selection) {
+            return true;
+        } 
+        else {
+            return false;
+        }
+    });
+});
+</script>
+<%= render 'layouts/footer' %>
+</body>
 </html>

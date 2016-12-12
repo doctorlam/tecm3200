@@ -1,0 +1,28 @@
+<%= form_for(@grade) do |f| %>
+  <% if @grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
+
+      <ul>
+      <% @grade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </div>
+ <div class="second-form-group">
+    <h2>Deliverables</h2>
+        <%= f.fields_for :gradecategories do |builder| %>
+        <%= render 'gradecategory_fields', f:builder %>
+          <% end %>
+      <%= link_to_add_fields "Add Criteria", f, :gradecategories, class: "btn btn-mini btn-info add-link" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

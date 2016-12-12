@@ -1,0 +1,9 @@
+<%= simple_form_for ([@post, @post.responses.build]) do |f| %>
+	<%= f.text_area :comment, rows: 15, class: "form-control" %>
+	<br>
+	    <h3>Attach a file?</h3>
+	      <%= f.file_field :document, :class => "form-control-file" %>
+	      <br>
+
+	<%= f.button :submit, class: "btn btn-primary form-control" %>
+<% end %>

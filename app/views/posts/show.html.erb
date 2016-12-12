@@ -1,0 +1,36 @@
+<div class = "container">
+	<div class="row row-centered">
+		<div class="col-md-9 col-centered">
+			<%= link_to "Back to all threads", posts_path %>
+
+			<h1><%= @post.title %></h1>
+			<% if current_user == @post.user %>
+			<%= link_to "Edit", edit_post_path(@post), class: "small-reply" %>
+				<%= link_to "Delete Post", post_path(@post), class: "small-reply", method: :delete, data: {confirm: "Are you sure you want to do this?"} %>
+			<% end %>
+			<div class="thread">
+			<p class ="small">authored by <%= @post.user.name %> <%= @post.user.last_name %> <%= time_ago_in_words(@post.created_at) %> ago</p>
+				<p><%= simple_format @post.content %></p>
+				<br>
+			<% if @post.document? %>
+				<p><strong>Attached File:</strong>
+                <a target=_blank href=" <%= @post.document.url %>"><%= @post.document.original_filename %></a></p>
+              <% end %>
+			</div>
+
+			<div class="reply">
+				<h3><%= @post.responses.count %> replies</h3>
+				<%= render @post.responses %>
+			</div>
+
+		<% if user_signed_in? %>
+			<div class="thread">
+				<h3>Reply to thread</h3>
+				<%= render "responses/form" %>
+			</div>
+		<% end %>
+				<%= link_to "Back to all threads", posts_path %>
+
+		</div>
+	</div>
+</div>

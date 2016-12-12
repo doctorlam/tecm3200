@@ -1,0 +1,23 @@
+<div class="row reply">
+	<div class="col-md-10">
+		<p><%= simple_format response.comment %></p>
+		<br>
+		<% if response.document? %>
+			<p><strong>Attached File:</strong>
+                <a target=_blank href=" <%= response.document.url %>"><%= response.document.original_filename %></a></p>
+          <% end %>
+
+	</div>
+	<div class="col-md-2 response-container">
+		<p class="small-response"><%= time_ago_in_words(response.created_at) %> ago</p>
+		<p class="small-response"><%= response.user.name %> <%= response.user.last_name %> </p>
+
+		<p class="small-response"><%= image_tag(response.user.avatar.url(:thumb), class: "tiny") %></p>
+		<% if current_user == response.user %>
+		<br>
+		<br>
+		<%= link_to "Edit", edit_post_response_path(response.post, response), class: "small-reply" %>
+		<%= link_to "Delete", [response.post, response], class:"small-reply", method: :delete, data: {confirm: "Are you sure?"} %></p>
+		<% end %>
+	</div>
+</div>

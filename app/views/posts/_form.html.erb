@@ -1,0 +1,17 @@
+<%= simple_form_for @post do |f|%>
+	<%= f.input :title %>
+	<p>Wrap code with the &lt;code&gt; tag</p>
+	<%= f.text_area :content, rows: 15, class: "form-control" %>
+	<br>
+	<% if @post.document.exists? %>
+      			<br>
+				<%= f.check_box :delete_document %>
+		      <%= f.label :delete_document, "Remove" %> <%= @post.document.original_filename %>
+		    <% else %>
+	<h3>Attach a file?</h3>
+	      <%= f.file_field :document, :class => "form-control-file" %>
+	 <% end %>
+	<br>
+	<%= f.button :submit, class: "btn btn-primary form-control" %>
+	<br>
+<% end %>
