@@ -8,10 +8,10 @@ class LessonsController < ApplicationController
   def index
   @search = Lesson.search(params[:q])
   @search.sorts = 'date' if @search.sorts.empty?
-
   @results = @search.result
   @results = @results.where(:lesson_type => "Main") unless params[:q]
   @lessons = @results
+  
 end
 
 

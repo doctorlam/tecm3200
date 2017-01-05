@@ -20,13 +20,7 @@
    
   
   <br>
-   <%= f.select :name_cont, options_from_collection_for_select(Lesson.all.order(:date), :name, :name), :prompt => 'Topic', class: "form-control" %>
-
- <%= f.select :date_gteq, options_from_collection_for_select(Lesson.all.order(:date), :date, :date), :prompt => 'Start Date', class: "form-control" %>
-   <%= f.select :date_lteq, options_from_collection_for_select(Lesson.all.order(:date), :date, :date), :prompt => 'End Date', class: "form-control" %>
-    &nbsp Clear All<%= link_to(lessons_path) do %>
-    <i class="material-icons">cancel</i>
-   <% end %>
+  
    <br><br>
 
 <div class="actions">
