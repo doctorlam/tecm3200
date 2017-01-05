@@ -6,9 +6,11 @@
 	
 <div class="row">
 	<div class="col-md-8 show-left">
-
-	  <h1>Lesson:<%= @lesson.name %></h1>
-
+	<% if @lesson.lesson_type == "Lab" %>
+	  <h1 style="color: #ecf0f1 !important; background: #c0392b !important; padding: 10px;">Lesson: <%= @lesson.name %> (<%= @lesson.lesson_type %>)</h1>
+	<% else %>
+		<h1 style="color: #ecf0f1 !important; background: #16a085 !important; padding: 10px;">Lesson: <%= @lesson.name %> (<%= @lesson.lesson_type %>)</h1>
+	<% end %>
 	  <h3>Week:
 	  <%= @lesson.week %></h3>
 

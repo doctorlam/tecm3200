@@ -10,17 +10,11 @@
       </ul>
     </div>
   <% end %>
+<div class="second-form-group">
+  <%= f.select :lesson_type, options_for_lesson_type, :prompt => 'Select Class Type' %>
+</div>
 <div class="first-group-form">
-     <div class="form-group">
-      <h2>Connect lesson to a project</h2>
-        <%= hidden_field_tag "lesson[project_ids][]", nil %>
-        <% Project.all.each do |project| %>
-          <%= check_box_tag "lesson[project_ids][]", project.id, @lesson.project_ids.include?(project.id), id: dom_id(project) %>
-          <%= label_tag dom_id(project), project.name %>
-          <br />
-
-        <% end %>
-    </div>
+     
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
@@ -111,6 +105,17 @@
     <%= f.file_field :image, :class => "form-control-file", class: "form-control" %>
   <% end %>
   </div>
+
+<div class="third-form-group">
+      <h2>Connect lesson to a project</h2>
+        <%= hidden_field_tag "lesson[project_ids][]", nil %>
+        <% Project.all.each do |project| %>
+          <%= check_box_tag "lesson[project_ids][]", project.id, @lesson.project_ids.include?(project.id), id: dom_id(project) %>
+          <%= label_tag dom_id(project), project.name %>
+          <br />
+
+        <% end %>
+    </div>
 
 
   <div class="actions">
