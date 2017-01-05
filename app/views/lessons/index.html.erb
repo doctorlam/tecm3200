@@ -4,10 +4,22 @@
 <%= link_to 'New Lesson', new_lesson_path, class: "btn btn-default" %>
 <% end %>
 <h1>Course Schedule</h1>
-<h3>Filter Schedule By:</h3>
+<div class="filter">
+<h2>Filter Schedule By:</h2>
 <%= search_form_for @search do |f| %>
-<%= f.select :lesson_type_cont, options_for_lesson_type, :prompt => 'Main or Lab?', class: "form-control" %>
+<label>
+<%= f.radio_button :lesson_type_cont, "Main", checked: "checked" %>
+  View Main Class Schedule (Displayed by default)
+</label>
+  &nbsp
+&nbsp
+  <label>
+  <%= f.radio_button :lesson_type_cont, "Lab" %>
+  View Lab Schedule
+</label>
+   
   
+  <br>
    <%= f.select :name_cont, options_from_collection_for_select(Lesson.all.order(:date), :name, :name), :prompt => 'Topic', class: "form-control" %>
 
  <%= f.select :date_gteq, options_from_collection_for_select(Lesson.all.order(:date), :date, :date), :prompt => 'Start Date', class: "form-control" %>
@@ -16,12 +28,13 @@
     <i class="material-icons">cancel</i>
    <% end %>
    <br><br>
+
 <div class="actions">
   <%= f.submit "Filter", class: "btn btn-green form-control" %>  
 </div>
+   </div>
 
 <% end %>
-
 <div class="table-responsive">
 <table class="table table-hover table-striped">
   <thead>

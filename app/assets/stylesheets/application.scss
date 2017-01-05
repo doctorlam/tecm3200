@@ -14,7 +14,10 @@
  *= require_self
 *= require commontator/application
 */
-
+.filter {
+	background: white;
+	padding: 15px;
+}
 select {
 	color: black;
 }
