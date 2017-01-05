@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-md-8">
       <% if current_user != @admin %>
-          <%= link_to 'Submit an assignment', new_submission_path, class: 'btn btn-primary' %>
+          <%= link_to 'Submit an assignment', new_submission_path, class: 'btn btn-green' %>
       <% end %>
       <h1><%= current_user.name %>'s Grades</h1>
       <div class="table-responsive">

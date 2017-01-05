@@ -1,0 +1,25 @@
+<%= simple_form_for(@tutorial) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-group">
+    <%= f.input :name, class: 'form-control' %>
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: "30", class: 'form-control' %>
+    <%= f.input :video, class: 'form-control' %>
+  </div>
+
+  <div class="second-form-group">
+<h2>Connect Tutorial with a Lesson</h2>
+
+        <%= hidden_field_tag "tutorial[lesson_ids][]", nil %>
+        <% Lesson.all.each do |lesson| %>
+          <%= check_box_tag "tutorial[lesson_ids][]", lesson.id, @tutorial.lesson_ids.include?(lesson.id), id: dom_id(lesson) %>
+          <%= label_tag dom_id(lesson), lesson.name %> | <%= lesson.date %>
+          <br />
+
+        <% end %>
+    </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

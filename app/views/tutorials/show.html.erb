@@ -1,0 +1,35 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+<div class="col-md-8">
+  <h1><%= @tutorial.name %></h1>
+  <%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
+<%= link_to 'Back', tutorials_path %>
+
+ <% if @tutorial.video? %>
+<div class="video-container">
+  	<%= @tutorial.video.html_safe %>
+ </div>
+ <% end %>
+	<p><%= simple_format @tutorial.content.html_safe %></p>
+  
+  
+</div>
+  <div class="col-md-4 projects-right">
+  	
+		<div class="padding-right">
+
+			<h1>What is this tutorial related to?</h1>
+			<p style = "font-size: 1.3rem !important; line-height: 2rem !important">This tutorial or resource is pertinent to:</p>
+			<% for @lesson in @tutorial.lessons %>
+			<ul>
+				<li style = "font-size: 1.3rem !important; line-height: 2rem !important"><%= link_to @lesson.name, @lesson %>", which was discussed on <%= @lesson.date %> in week <%= @lesson.week %> of the semester.</li>
+		     </ul>
+      <% end %>
+		</div>
+			
+	</div>
+<br>
+<br>
+
+
+</div>

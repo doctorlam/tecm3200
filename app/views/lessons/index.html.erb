@@ -4,17 +4,22 @@
 <%= link_to 'New Lesson', new_lesson_path, class: "btn btn-default" %>
 <% end %>
 <h1>Course Schedule</h1>
-
+<h3>Filter Schedule By:</h3>
 <%= search_form_for @search do |f| %>
-<div class="field">
-  <%= f.label :name_cont, "Search Lessons" %>
-  <%= f.text_field :name_cont, class: "form-control" %>
-  </div>
-  <div class="actions"><%= f.submit "Search", class: "btn-default btn" %></div>
+   <%= f.select :week_cont, options_from_collection_for_select(Lesson.all.order(:date), :week, :week), :prompt => 'Week', class: "form-control" %>
+   <%= f.select :name_cont, options_from_collection_for_select(Lesson.all.order(:date), :name, :name), :prompt => 'Topic', class: "form-control" %>
 
+ <%= f.select :date_gteq, options_from_collection_for_select(Lesson.all.order(:date), :date, :date), :prompt => 'Start Date', class: "form-control" %>
+   <%= f.select :date_lteq, options_from_collection_for_select(Lesson.all.order(:date), :date, :date), :prompt => 'End Date', class: "form-control" %>
+    &nbsp Clear All<%= link_to(lessons_path) do %>
+    <i class="material-icons">cancel</i>
+   <% end %>
+   <br><br>
+<div class="actions">
+  <%= f.submit "Filter", class: "btn btn-green form-control" %>  
+</div>
 
 <% end %>
-<%= link_to "Clear Search", request.path, class:"cancel-button" %>
 
 <div class="table-responsive">
 <table class="table table-hover table-striped">
@@ -61,7 +66,6 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @lessons %>
 
 </div>
 

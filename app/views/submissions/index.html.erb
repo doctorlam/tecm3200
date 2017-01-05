@@ -1,21 +1,21 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<%= link_to "Create New Homework Assignment", assignments_path %>
+<h3><%= link_to "All grades", usergrades_path, class: "btn btn-green form-control" %>
 <h1>Admin Gradebook</h1>
+<h3>Filter by:</h3>
 <%= search_form_for @search do |f| %>
-<div class="field">
-    <%= f.label :user_name_cont %>
-    <%= f.search_field :user_name_cont, class: "form-control" %>
-  </div>
-  <div class="field">
-      <%= f.label :assignments_name_cont %>
-      <%= f.search_field :assignments_name_cont, class: "form-control" %>
-  </div>
-  <div class="actions"><%= f.submit "Search", class: "btn-primary btn" %></div>
+   <%= f.select :user_name_cont, options_from_collection_for_select(User.all.order(:last_name), :name, :last_name), :prompt => 'All Students', class: "form-control" %>
+   <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.order(:created_at), :name, :name), :prompt => 'All Assignments', class: "form-control" %>
+    &nbsp Clear All<%= link_to(submissions_path) do %>
+    <i class="material-icons">cancel</i>
+   <% end %>
+   <br><br>
+<div class="actions">
+  <%= f.submit "Filter", class: "form-control btn-primary" %><br>
 
+</div>
 
-<% end %>
-<%= link_to "Clear Search", request.path, class:"cancel-button" %>
+  <% end %>
 <br >
 <br>
 <input type='button' id='hideshow' value='Show/Hide Graded Submissions' class="btn btn-primary">
@@ -100,7 +100,6 @@
     </table>
   </div><!--responsive table close-->
 </div>
-<h3><%= link_to "All users grades", pages_usergrades_path, class: "btn btn-primary form-control" %>
 
 <br>  
 </div>

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :tutorials
   resources :presentations
   resources :grades
-  resources :assignments do
-  resources :submissions, only: [:new, :create, :edit, :show]
-end
+  resources :submissions
+  resources :assignments
   resources :abouts
   resources :projects
   resources :courses
@@ -13,9 +13,7 @@ end
 
   get 'pages/gradebook'
   get 'pages/accounts'
-    get 'pages/usergrades'
- get 'instructor_gradebook' => "submissions#instructor_gradebook"
-  get 'student_history' => "submissions#student_history"
+  get 'usergrades' => "submissions#usergrades"
  
   devise_for :users
    match 'users/:id' => 'users#index', via: :get

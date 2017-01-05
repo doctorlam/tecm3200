@@ -1,9 +1,7 @@
 class Assignment < ActiveRecord::Base
-	
-	has_many :users
-	belongs_to :user
-	has_many :submissions, :dependent => :destroy
+	has_many :portals
+	has_many :submissions, :through => :portals
+	has_many :homeworks, :through => :turnins
 	has_many :learnings
 	has_many :lessons, :through => :learnings
-
 end

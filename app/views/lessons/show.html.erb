@@ -36,7 +36,7 @@
 			      		<li>Presentation file: <%= link_to presentation.name, presentation_url(presentation) %></li>
 					<% end %>
 				<% if @lesson.document? %>
-					<li>Presentation file: <a target=_blank href=" <%= @lesson.document.url %>"><%= @lesson.document.original_filename %></a></li>
+					<li>Other file(s): <a target=_blank href=" <%= @lesson.document.url %>"><%= @lesson.document.original_filename %></a></li>
 					
 				<% end %>
 					<% if @lesson.image? %>

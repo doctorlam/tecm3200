@@ -30,7 +30,6 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
-      @assignment.user_id = current_user.id
 
     respond_to do |format|
       if @assignment.save

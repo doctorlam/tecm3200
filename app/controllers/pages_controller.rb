@@ -6,20 +6,11 @@ class PagesController < ApplicationController
   def policies
   end
 
-  def usergrades 
-    if user_signed_in? && current_user.admin?
-       
-        @assignments = Assignment.all
-        @usergrades = User.order(last_name: :asc)
 
-    else
-      redirect_to lessons_url, alert: "You don't have permission to do that! Nice try though :)"
-    end
-  end
 
   def gradebook
     if user_signed_in?
-       @submissions = current_user.submissions.order(created_at: :desc)
+  	   @submissions = current_user.submissions.order(created_at: :desc)
         @assignments = Assignment.all
      
   	else 

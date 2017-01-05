@@ -8,6 +8,7 @@ class Lesson < ActiveRecord::Base
 	has_many :learnings
 	has_many :projects, :through => :learnings
 	has_many :presentations, :through => :learnings
+	has_many :presentations, :through => :learnings
 	has_many :assignments, :through => :learnings
 	acts_as_commontable
 	
@@ -57,5 +58,10 @@ class Lesson < ActiveRecord::Base
   	default_scope { order('date') } 
   	  self.per_page = 14
 
+private
+
+  ransacker :week do
+    Arel.sql("to_char(\"#{table_name}\".\"id\", '99999')")
+  end
 
 end

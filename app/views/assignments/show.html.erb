@@ -12,15 +12,13 @@
 			<h3>Deadline:</h3>
 		  		<h4><%= @assignment.deadline %></h4>
 			 <h3>What you Need To Do:</h3>
-			  <p><%= simple_format @assignment.description %></p>
+			  <p><%= simple_format @assignment.description.html_safe %></p>
 			  <h3>What's it worth?:</h3>
 			  <p><%= @assignment.score %> points</p>
 		<% if current_user.try(:admin?) %>
 			<br />
 		<% else %>
-			  <div class="center">
-      			<%= link_to "Submit this Assignment!", new_assignment_submission_path(@assignment), class: "btn btn-default" %>
-    			</div>
+			  <%= link_to 'Submit Your Homework', "/submissions/new?assignment=#{@assignment.id}", class: 'btn btn-primary form-control' %>
 		<% end %>
 		<br />
 		</div>

@@ -15,6 +15,24 @@
 *= require commontator/application
 */
 
+select {
+	color: black;
+}
+.btn-green {
+	background: #99b3ab !important;
+	border: #99b3ab !important;
+	color: white !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 1.3rem !important;
+	font-family: 'open sans condensed';
+	letter-spacing: 5px;
+	height: 44px;
+}
+a.btn.btn-green:hover {
+	background: gray !important;
+	color: #99b3ab !important;
+}
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -77,13 +95,15 @@ body {
 	padding: 20px;
 }
 a {
-	text-decoration: underline;
+	text-decoration: underline; 
 }
 a:visited {
 	color: black;
 }
 a:hover {
-	color: white;
+	background: none !important;
+	color: gray;
+	text-decoration: none;
 }
 .show-field {
 	font-size: 1.25rem;

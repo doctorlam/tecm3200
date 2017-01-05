@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
   def index
   @search = Lesson.search(params[:q])
   @search.sorts = 'date' if @search.sorts.empty?
-  @lessons = @search.result.paginate(:page => params[:page])
+  @lessons = @search.result
 
 end
 

@@ -3,7 +3,7 @@
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if current_user.try(:admin?) %>
-  <%= link_to 'Back to Gradebook', instructor_gradebook_path %>
+  <%= link_to 'Back to Gradebook', submissions_path %>
 <% end %>
 <div class="row">
 

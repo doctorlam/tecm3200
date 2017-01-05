@@ -15,7 +15,7 @@
 				<% @users.each do |user| %>
 
                 	<tr>
-                		<td><%= image_tag user.avatar (:thumb) %></td>
+                		<td><%= image_tag user.avatar (:medium) %></td>
                 		<td><%= user.name %> <%=user.last_name %></td>
                 		<td><%= user.email %></td>
                 		<td><%= number_to_phone(user.phonenumber) %></td>

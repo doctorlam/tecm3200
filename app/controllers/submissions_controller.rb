@@ -7,18 +7,22 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions
   # GET /submissions.json
-   def instructor_gradebook
-    @submissions = Submission.all.where(creator: current_user).order("created_at DESC")
-    @assignments = Assignment.all
-  end
-  
-  def student_history
-    @submissions = Submission.all.where(student: current_user).order("created_at DESC")
-    @assignments = Assignment.all
+  def usergrades 
+    if user_signed_in? && current_user.admin?
+       
+        @assignments = Assignment.all
+        @usergrades = User.order(last_name: :asc)
+    else
+      redirect_to lessons_url, alert: "You don't have permission to do that! Nice try though :)"
+    end
   end
 
   def index
-    @search = Submission.all
+    @search = Submission.search(params[:q])
+    @search.sorts = 'created_at DESC' if @search.sorts.empty?
+    @submissions = @search.result
+    @assignments = Assignment.all
+
   end
 
   # GET /submissions/1
@@ -28,8 +32,11 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/new
   def new
-    @submission = Submission.new
-    @assignment = Assignment.find(params[:assignment_id])
+    @submission = Submission.new(:user => @current_user)
+    session[:submission_params] ||= {}
+    @submission = Submission.new(session[:submission_params])
+    @submission.current_step = session[:submission_step]
+
   end
 
   # GET /submissions/1/edit
@@ -40,22 +47,27 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
 def create
-    @submission = Submission.new(submission_params)
-    @assignment = Assignment.find(params[:assignment_id])
-    @creator = @assignment.user
-    @submission.assignment_id = @assignment.id
-    @submission.student_id = current_user.id
-    @submission.creator_id = @creator.id
-
-    respond_to do |format|
-      if @submission.save
-        format.html { redirect_to student_history_url, notice: 'Submission was successfully created.' }
-        format.json { render :show, status: :created, location: @submission }
-      else
-        format.html { render :new }
-        format.json { render json: @submission.errors, status: :unprocessable_entity }
-      end
+  session[:submission_params].deep_merge!(params[:submission]) if params[:submission]
+  @submission = Submission.new(session[:submission_params])
+  @submission.user_id = current_user.id
+  @submission.current_step = session[:submission_step]
+  if @submission.valid?
+    if params[:back_button]
+      @submission.previous_step
+    elsif @submission.last_step?
+      @submission.save if @submission.all_valid?
+    else
+      @submission.next_step
     end
+    session[:submission_step] = @submission.current_step
+  end
+  if @submission.new_record?
+    render "new"
+  else
+    session[:submission_step] = session[:submission_params] = nil
+    flash[:notice] = "Assignment Submitted!"
+    redirect_to @submission
+  end
 
 end
 
@@ -65,7 +77,7 @@ end
 
     respond_to do |format|
       if @submission.update(submission_params)
-        format.html { redirect_to student_history_url, notice: 'Submission was successfully updated.' }
+        format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
         format.html { render :edit }
@@ -94,7 +106,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:assignment_id, :id, :feedback, :delete_image, :image, :homework_id, :user, :name, {assignment_ids: []}, :assignment, :user_id, :assignment_id, :score, :totalscore, :description, :assignment_id, :document)
+      params.require(:submission).permit(:feedback, :delete_image, :image, :homework_id, :user, :name, {assignment_ids: []}, :assignment, :user_id, :assignment_id, :score, :totalscore, :description, :assignment_id, :document)
     end
     def check_user
       if current_user == authorize_admin

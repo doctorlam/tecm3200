@@ -1,0 +1,44 @@
+  
+<% for assignment in @submission.assignments %>
+  <h1>STEP 2 - Complete "<%= assignment.name %>"</h1>
+
+<% end %>
+<div class="row">
+  <div class="col-md-8">
+    <div class="third-form-group">
+  <%= f.hidden_field :assignment_name, :value => assignment.name %>
+
+      <h2>Enter Submission Text (if applicable)</h2>
+      <%= f.label :description, 'Submission Text Box (Feel free to use line breaks and write as if a WYSIWYG.)' %><br>
+      <%= f.text_area :description, class: "form-control", rows: "10" %>
+    </div>
+    <div class="second-form-group">
+    <h2>Add Attachment (if applicable)</h2>
+      <%= f.label :document %>
+      <%= f.file_field :document, :class => "form-control-file", class: "form-control" %>
+
+    </div>
+  </div>
+
+  <div class= "col-md-4 projects-right">
+    <div class="padding-right">
+        
+          <% for assignment in @submission.assignments %>
+            <h2>Instructions for "<%= assignment.name %>"</h2>
+              <p><%= simple_format assignment.description.html_safe %></p>
+
+          <% end %>
+
+
+          <% for assignment in @submission.assignments %>
+
+            <h2>Deadline</h2>
+                    
+                <p>Due: <%= assignment.deadline %></p>
+            <% end %>
+
+
+                    
+      </div>
+  </div>
+</div>
