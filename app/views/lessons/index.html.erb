@@ -7,7 +7,7 @@
 <h3>Filter Schedule By:</h3>
 <%= search_form_for @search do |f| %>
 <%= f.select :lesson_type_cont, options_for_lesson_type, :prompt => 'Main or Lab?', class: "form-control" %>
-   <%= f.select :week_cont, options_from_collection_for_select(Lesson.all.order(:date), :week, :week), :prompt => 'Week', class: "form-control" %>
+   <%= f.select :week_cont, options_for_week, :prompt => 'Week', class: "form-control"  %>
    <%= f.select :name_cont, options_from_collection_for_select(Lesson.all.order(:date), :name, :name), :prompt => 'Topic', class: "form-control" %>
 
  <%= f.select :date_gteq, options_from_collection_for_select(Lesson.all.order(:date), :date, :date), :prompt => 'Start Date', class: "form-control" %>
