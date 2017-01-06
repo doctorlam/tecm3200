@@ -22,7 +22,7 @@ get 'users/:id' => 'users#index'
 # or
 resources :users, only: [:index]
 
-root :to => 'lessons#index'  
+root :to => 'abouts#index'  
 resources :lessons
   get 'pages/policies'
 
