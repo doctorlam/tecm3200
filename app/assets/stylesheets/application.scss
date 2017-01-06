@@ -14,6 +14,10 @@
  *= require_self
 *= require commontator/application
 */
+
+nav a:hover {
+	background: #1084FF !important;
+}
 nav {
 	z-index: 100 !important;
 }
