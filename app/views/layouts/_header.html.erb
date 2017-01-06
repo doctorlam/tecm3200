@@ -12,20 +12,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
 			
-<li><%= link_to root_path do %>
-<%= image_tag 'home.png' %> 
-<p>Home</p>   
-<% end %></li>
-<li><%= link_to lessons_path do %>
-<%= image_tag 'calendar.png' %>    
-	<p>Schedule</p>
-<% end %></li>
-<li><%= link_to projects_path do %>
-<%= image_tag 'projects2.png' %>    
+		<li><%= link_to root_path do %>
+		<%= image_tag 'home.png' %> 
+		<p>Home</p>   
+		<% end %></li>
+		<li><%= link_to lessons_path do %>
+		<%= image_tag 'calendar.png' %>    
+			<p>Schedule</p>
+		<% end %></li>
+		<li><%= link_to projects_path do %>
+		<%= image_tag 'projects2.png' %>    
 
-	<p>Projects</p>
-<% end %></li>
-<li class="dropdown">
+			<p>Projects</p>
+		<% end %></li>
+			<li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<%= image_tag 'projects.png' %>                          	<p>Resources</p>
                             </a>
@@ -90,7 +90,7 @@
 			<% else %>
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<%= image_tag 'missing.png' %>                            	<p>Account</p>
+							<%= image_tag 'missing.png' %>                          	<p>Account</p>
                             </a>
              <ul class="dropdown-menu">
 				<li><%= link_to "Register", new_user_registration_path %></li>
@@ -99,7 +99,7 @@
 			</li>
 			<% end %>
 		</ul>
-		</div><!--navbar collapse div-->
+	</div><!--navbar collapse div-->
 	</nav>
 	<div class="tagline animated slideInUp">	
 				<h1><%= link_to "tecm3200", lessons_path %></h1>

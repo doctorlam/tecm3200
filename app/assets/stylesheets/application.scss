@@ -14,7 +14,9 @@
  *= require_self
 *= require commontator/application
 */
-
+nav {
+	z-index: 100 !important;
+}
 nav img {
 	height: 40px !important;
 	width: 40px !important;
