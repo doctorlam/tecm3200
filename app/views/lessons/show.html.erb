@@ -62,7 +62,7 @@
 				<li><%= simple_format homework.content.html_safe %></li>
 				<% end %>
 				 <% for assignment in @lesson.assignments %>  
-		              <li><span class="color: #2980b9">[Turn In]</span> <%= link_to assignment.name, assignment_url(assignment) %></li>
+		              <li><span style="color: #2980b9">[Turn In]</span> <%= link_to assignment.name, assignment_url(assignment) %></li>
 		                
 		           <% end %>
 				</ul>
