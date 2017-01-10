@@ -16,10 +16,17 @@
 		<%= image_tag 'home.png' %> 
 		<p>Home</p>   
 		<% end %></li>
-		<li><%= link_to lessons_path do %>
-		<%= image_tag 'calendar.png' %>    
-			<p>Schedule</p>
-		<% end %></li>
+		<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= image_tag 'calendar.png' %>                           <p>Schedule</p>
+                            </a>
+                          <ul class="dropdown-menu">
+                            
+                            <li><%= link_to "Main Class", lessons_path %></li>
+                            <li><a href="lessons?utf8=✓&q%5Blesson_type_cont%5D=Lab&commit=Filter">Lab</a></li>
+                          </ul>
+              </li>
+
 		<li><%= link_to projects_path do %>
 		<%= image_tag 'projects2.png' %>    
 
