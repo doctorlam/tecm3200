@@ -14,10 +14,10 @@
 			 <h3>What you Need To Do:</h3>
 			  <p><%= simple_format @assignment.description.html_safe %></p>
 			  <h3>What's it worth?:</h3>
-			  <% if @assignment.fake_score? %>
-			  	<p><%= @assignment.fake_score %> points</p>
-			  <% else %>
+			  <% if @assignment.score? %>
 			  	<p><%= @assignment.score %> points</p>
+			  <% else %>
+			  	<p><%= @assignment.fake_score %> points</p>
 			  <% end %>
 		<% if current_user.try(:admin?) %>
 			<br />
