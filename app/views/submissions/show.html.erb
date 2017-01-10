@@ -43,7 +43,7 @@
       
                 <% else %>
                  <p style = "color:red !important">This assignment is worth 
-                  <% for assignment in @submission.assignments %><%= assignment.score %> points, but it's not graded yet!<% end %></p>
+                  <% for assignment in @submission.assignments %><%= assignment.fake_score %> points, but it's not graded yet!<% end %></p>
                 <% end %>
           
               <h3>Instructor Feedback</h3>

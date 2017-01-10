@@ -31,7 +31,7 @@
                   <% if submission.score? %>
                     <td style = "color: green"><%= submission.score %>/<%= assignment.score %></td>
                   <% else %>
-                    <td style = "color:red">Not graded yet!</td>
+                    <td style = "color:red">Not graded yet (<%= assignment.fake_score %> points)</td>
                   <% end %>
                   
                   <% if submission.document? %>
