@@ -10,14 +10,14 @@
 			<h1><%= @assignment.name %></h1>
 
 			<h3>Deadline:</h3>
-		  		<h4><%= @assignment.deadline %></h4>
+		  		<h4 style="color: #C0392B"><%= @assignment.deadline %></h4>
 			 <h3>What you Need To Do:</h3>
-			  <p><%= simple_format @assignment.description.html_safe %></p>
+			 <h4 style="color: #C0392B !important"><%= simple_format @assignment.description.html_safe %></h4>
 			  <h3>What's it worth?:</h3>
 			  <% if @assignment.score? %>
-			  	<p><%= @assignment.score %> points</p>
+			  	<h4 style="color: #C0392B"><%= @assignment.score %> points</p>
 			  <% else %>
-			  	<p><%= @assignment.fake_score %> points</p>
+			  	<h4 style="color: #C0392B"><%= @assignment.fake_score %> points</p>
 			  <% end %>
 		<% if current_user.try(:admin?) %>
 			<br />
