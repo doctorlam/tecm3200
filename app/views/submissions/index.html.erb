@@ -4,7 +4,7 @@
 <h1>Admin Gradebook</h1>
 <h3>Filter by:</h3>
 <%= search_form_for @search do |f| %>
-   <%= f.select :user_name_cont, options_from_collection_for_select(User.all.order(:last_name), :last_name, :last_name), :prompt => 'All Students', class: "form-control" %>
+   <%= f.select :user_last_name_cont, options_from_collection_for_select(User.all.order(:last_name), :last_name, :last_name), :prompt => 'All Students', class: "form-control" %>
    <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.order(:created_at), :name, :name), :prompt => 'All Assignments', class: "form-control" %>
     &nbsp Clear All<%= link_to(submissions_path) do %>
     <i class="material-icons">cancel</i>
