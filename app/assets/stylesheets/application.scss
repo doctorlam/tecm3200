@@ -588,6 +588,9 @@ code {
 	.navbar a {
 	text-align: center;
 	}
+	.navbar-fixed-top .navbar-collapse {
+		max-height: 100% !important;
+	}
 	.projects-right {
 		margin-bottom: 10px;
 	}
