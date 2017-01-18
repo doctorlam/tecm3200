@@ -14,7 +14,25 @@
  *= require_self
 *= require commontator/application
 */
+.img-container {
+    width: 100px; /* whatever set width */
+    height: 100px;
+    display: inline-block; /* or you could float them */
+    overflow: hidden;
+    	border-radius: 50%;
 
+}
+.img-container-discussion {
+    width: 80px; /* whatever set width */
+    height: 80px;
+    display: inline-block; /* or you could float them */
+    overflow: hidden;
+    	border-radius: 50%;
+
+}
+
+.img-container img, .img-container-discussion img {
+	width: 100%;}
 nav a:hover {
 	background: #1084FF !important;
 }

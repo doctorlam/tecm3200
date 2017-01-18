@@ -3,7 +3,7 @@
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th>No.</th>
+                <th>f</th>
                 <th></th>
                 <th>Name</th>
                 <th>Email</th>
@@ -16,7 +16,9 @@
 
                 	<tr>
                     <td><%= (i+1) %>.</td>
-                		<td><%= image_tag user.avatar (:medium) %></td>
+                  <td><div class="img-container">
+                    <%= image_tag user.avatar %>
+                  </div></td>
                 		<td><%= user.name %> <%=user.last_name %></td>
                 		<td><%= user.email %></td>
                 		<td><%= number_to_phone(user.phonenumber) %></td>
