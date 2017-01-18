@@ -1,5 +1,6 @@
-<div class="container">
-<h1>Discussion Board</h1>
+<div class="container"> 
+
+<h1><%= image_tag 'discussion.png' %> Discussion Board</h1>
 <% if user_signed_in? %>
 		<%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
 	<% end %>
