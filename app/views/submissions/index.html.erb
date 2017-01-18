@@ -4,7 +4,7 @@
 <h1>Admin Gradebook</h1>
 <h3>Filter by:</h3>
 <%= search_form_for @search do |f| %>
-   <%= f.select :user_last_name_cont, options_from_collection_for_select(User.all.order(:last_name),:name,:last_name), :prompt => 'All Students', class: "form-control" %>
+   <%= f.select :user_name_cont, options_from_collection_for_select(User.all.order(:last_name), :name, :last_name), :prompt => 'All Students', class: "form-control" %>
    <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.order(:created_at), :name, :name), :prompt => 'All Assignments', class: "form-control" %>
     &nbsp Clear All<%= link_to(submissions_path) do %>
     <i class="material-icons">cancel</i>
@@ -24,6 +24,7 @@
     <table class="table table-striped table-condensed table-hover">
       <thead>
         <tr>
+          <th></th>
           <th><%= sort_link @search, :user_name, "Student" %></th>
           <th><%= sort_link @search, :assignments_name, "Assignment" %></th>
           <th><%= sort_link @search, :created_at, "Date Submitted" %></th>
@@ -34,10 +35,11 @@
         </tr>
       </thead>
        <tbody>
-        <% @submissions.each do |submission| %>
+        <% @submissions.each_with_index do |submission, i| %>
 
         <% if submission.score == nil %>
-         
+            <td><%= (i+1) %>.</td>
+
              <td><%= link_to [submission.user.name, submission.user.last_name].join(" "), submission %></td>
           <% for assignment in submission.assignments %>
             <td><%= assignment.name %></td>
@@ -49,7 +51,7 @@
             <% if submission.score? %>
               <td style = "color: green !important"><%= submission.score %>/<% for assignment in submission.assignments %><%= assignment.score %> or <%= number_to_percentage(submission.score.to_f * 100 / assignment.score) %><% end %></td>
             <% else %>
-              <td style = "color: red !important">Not graded yet!</td>
+              <td style = "color: red !important">Not graded yet (<%= assignment.fake_score %> points</td>
             <% end %>
             <% if submission.document? %>
           <td><a target=_blank href=" <%= submission.document.url %>"><%= submission.document.original_filename %></a></td>
@@ -70,8 +72,10 @@
     <table class="table table-striped table-condensed table-hover">
 
        <tbody>
-        <% @submissions.each do |submission| %>
+        <% @submissions.each_with_index do |submission, i| %>
           <% if submission.score? %>
+            <td><%= (i+1) %>.</td>
+
              <td><%= link_to [submission.user.name, submission.user.last_name].join(" "), submission %></td>
           <% for assignment in submission.assignments %>
             <td><%= assignment.name %></td>

@@ -3,18 +3,19 @@
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-              	<th></th>
-
-                <th>User Name</th>
+                <th>No.</th>
+                <th></th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>            
               </tr>
             </thead>
 
              <tbody>
-				<% @users.each do |user| %>
+				<% @users.each_with_index do |user, i| %>
 
                 	<tr>
+                    <td><%= (i+1) %>.</td>
                 		<td><%= image_tag user.avatar (:medium) %></td>
                 		<td><%= user.name %> <%=user.last_name %></td>
                 		<td><%= user.email %></td>
