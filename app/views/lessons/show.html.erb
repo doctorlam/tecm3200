@@ -15,23 +15,22 @@
 	  <%= @lesson.week %></h3>
 
 
-		<h3>Date:
-	  <%= @lesson.date %></h3>
+		<h3><%= image_tag 'calendar-show.png' %> <%= @lesson.date %></h3>
 
-		<h3>Objectives:</h3>
+		<h3><%= image_tag 'bullets.png' %> Objectives:</h3>
 		<ul>
 			<% for objective in @lesson.objectives %>
 			<li><%= objective.content %></li>
 		<% end %>
 		</ul>
 
-		<h3>In-Class Activities:</h3>
+		<h3><%= image_tag 'checks.png' %> In-Class Activities:</h3>
 		<ul>
 		<% for classactivity in @lesson.classactivitys.order(:created_at) %>
 		<li><%= classactivity.content.html_safe %></li>
 		<% end %>
 		</ul>
-		<h3>Lesson Attachments</h3>
+		<h3><%= image_tag 'attachments.png' %> Lesson Attachments:</h3>
 				<ul>
 				 	<% for presentation in @lesson.presentations %>
 
