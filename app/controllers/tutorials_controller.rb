@@ -1,5 +1,7 @@
 class TutorialsController < ApplicationController
   before_action :set_tutorial, only: [:show, :edit, :update, :destroy]
+    before_filter :check_user, only: [:edit, :update, :destroy]
+
   before_filter :authorize_admin, only: [:new, :create, :destroy, :edit]
 
   # GET /tutorials
