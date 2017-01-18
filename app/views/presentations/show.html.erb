@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 
-  <h1>Presentation Title: "<%= @presentation.name %>"</h1>
+  <h1><%= image_tag 'present.png' %> Presentation Title: "<%= @presentation.name %>"</h1>
   <% for @lesson in @presentation.lessons %>
     <h3>Presented on <%= @lesson.date %></h3>
   <% end %>

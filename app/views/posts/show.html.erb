@@ -3,7 +3,7 @@
 		<div class="col-md-9 col-centered">
 			<%= link_to "Back to all threads", posts_path %>
 
-			<h1><%= @post.title %></h1>
+			<h1><%= image_tag 'discussion.png' %> <%= @post.title %></h1>
 			<% if current_user == @post.user %>
 			<%= link_to "Edit", edit_post_path(@post), class: "small-reply" %>
 				<%= link_to "Delete Post", post_path(@post), class: "small-reply", method: :delete, data: {confirm: "Are you sure you want to do this?"} %>
