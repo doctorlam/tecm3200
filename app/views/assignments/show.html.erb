@@ -9,16 +9,22 @@
 
 			<h1><%= @assignment.name %></h1>
 
-			<h3>Deadline:</h3>
+			<h3><%= image_tag 'calendar-show.png' %> Deadline:</h3>
 		  		<h4 style="color: #C0392B"><%= @assignment.deadline %></h4>
-			 <h3>What you Need To Do:</h3>
+			 <h3><%= image_tag 'checks.png' %> What you Need To Do:</h3>
 			 <h4 style="color: #C0392B !important"><%= simple_format @assignment.description.html_safe %></h4>
-			  <h3>What's it worth?:</h3>
+			  <h3><%= image_tag 'point.png' %> What's it worth?:</h3>
 			  <% if @assignment.score? %>
 			  	<h4 style="color: #C0392B"><%= @assignment.score %> points</p>
 			  <% else %>
 			  	<h4 style="color: #C0392B"><%= @assignment.fake_score %> points</p>
 			  <% end %>
+			  <h3><%= image_tag 'attachments.png' %> Attached Submitted Document</h3>
+            <% if @assignment.attachment? %>
+                <ul><li><a target=_blank href=" <%= @assignment.attachment.url %>"><strong><%= @assignment.attachment.original_filename %></strong></a></li></ul>
+                <% else %>
+                <li>No Document(s) Attached!</li>
+              <% end %>
 		<% if current_user.try(:admin?) %>
 			<br />
 		<% else %>

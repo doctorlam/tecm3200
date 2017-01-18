@@ -39,6 +39,11 @@
     <%= f.label :score, 'Points' %><br>
     <%= f.number_field :score, class: "form-control" %>
   </div>
+  <h2>Add Attachment (if applicable)</h2>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment, :class => "form-control-file", class: "form-control" %>
+
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>
