@@ -19,14 +19,19 @@
         <td><%= link_to tutorial.name, tutorial %></td>
       
         <td><%= link_to 'Show', tutorial %></td>
+      <% if current_user.try(:admin?) %>
+
         <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
         <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
 <br>
+<% if current_user.try(:admin?) %>
 
 <%= link_to 'New Tutorial', new_tutorial_path %>
+<% end %>
 </div>
