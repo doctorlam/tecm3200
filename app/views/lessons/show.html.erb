@@ -11,11 +11,8 @@
 	<% else %>
 		<h1 style="color: #ecf0f1 !important; background: #16a085 !important; padding: 10px;">Lesson: <%= @lesson.name %> (<%= @lesson.lesson_type %>)</h1>
 	<% end %>
-	  <h3>Week:
-	  <%= @lesson.week %></h3>
-
-
-		<h3><%= image_tag 'calendar-show.png' %> <%= @lesson.date %></h3>
+	  <h3><%= image_tag 'calendar-show.png' %> Week:
+	  <%= @lesson.week %> | <%= @lesson.date %></h3>
 
 		<h3><%= image_tag 'bullets.png' %> Objectives:</h3>
 		<ul>
@@ -49,13 +46,13 @@
 	<div class="col-md-4 projects-right">
 		<div class="padding-right">
 			<h1>To Do Before Class</h1>
-				<h3>Readings:</h3>
+				<h3><%= image_tag 'book.png' %> Readings:</h3>
 				<ul>
 				<% for reading in @lesson.readings %>
 				<li><%= simple_format reading.content.html_safe %></li>
 				<% end %>
 				</ul>
-				<h3>Homework:</h3>
+				<h3><%= image_tag 'assignment.png' %> Homework:</h3>
 				<ul>
 				<% for homework in @lesson.homeworks %>
 				<li><%= simple_format homework.content.html_safe %></li>
@@ -66,7 +63,7 @@
 		           <% end %>
 				</ul>
 				
-				<h3>Related Project(s)</h3>
+				<h3><%= image_tag 'arrow.png' %> Related Project(s)</h3>
 				 <% for project in @lesson.projects %>
 			      	<ul><li><%= link_to project.name, project_url(project) %></li></ul>
 			               
