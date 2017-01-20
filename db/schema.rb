@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118192056) do
+ActiveRecord::Schema.define(version: 20170120142334) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "name"
@@ -313,10 +313,14 @@ ActiveRecord::Schema.define(version: 20170118192056) do
     t.string   "name"
     t.text     "content"
     t.text     "video"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "lesson_id"
     t.integer  "user_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

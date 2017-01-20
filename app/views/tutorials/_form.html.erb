@@ -5,7 +5,10 @@
     <%= f.label :content %>
     <%= f.text_area :content, rows: "30", class: 'form-control' %>
     <%= f.input :video, class: 'form-control' %>
-  </div>
+    <h2>Add Attachment (if applicable)</h2>
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment, :class => "form-control-file", class: "form-control" %>
+</div>
 
   <div class="second-form-group">
 <h2>Connect Tutorial with a Lesson</h2>
