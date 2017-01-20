@@ -35,15 +35,16 @@
                 <li>No Document(s) Attached!</li>
               <% end %>
  </div>
+ <%= link_to "Submit Assignment", submissions_new_path, class: "btn btn-green" %>
   <div class="col-md-4 projects-right">
   	
 		<div class="padding-right">
 
 			<h1>What is this tutorial related to?</h1>
-			<p style = "font-size: 1.3rem !important; line-height: 2rem !important">This tutorial or resource is pertinent to:</p>
+			<p style = "font-size: 1.2rem !important; line-height: 2rem !important">This tutorial or resource is pertinent to:</p>
 			<% for @lesson in @tutorial.lessons %>
 			<ul>
-				<li style = "font-size: 1.3rem !important; line-height: 2rem !important"><%= link_to @lesson.name, @lesson %>", which was discussed on <%= @lesson.date %> in week <%= @lesson.week %> of the semester.</li>
+				<li style = "font-size: 1.2rem !important; line-height: 2rem !important"><%= link_to @lesson.name, @lesson %>", which was discussed on <%= @lesson.date %> in week <%= @lesson.week %> of the semester.</li>
 		     </ul>
       <% end %>
 		</div>
