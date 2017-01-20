@@ -34,8 +34,10 @@
                 <% else %>
                 <li>No Document(s) Attached!</li>
               <% end %>
+              <br>
+         <%= link_to "Submit Assignment", new_submission_path, class: "btn btn-green" %>
  </div>
- <%= link_to "Submit Assignment", submissions_new_path, class: "btn btn-green" %>
+
   <div class="col-md-4 projects-right">
   	
 		<div class="padding-right">
