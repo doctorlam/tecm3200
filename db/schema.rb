@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120142334) do
+ActiveRecord::Schema.define(version: 20170120154023) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "name"
@@ -46,8 +46,9 @@ ActiveRecord::Schema.define(version: 20170120142334) do
   create_table "classactivities", force: :cascade do |t|
     t.integer  "lesson_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "tutorial_id"
   end
 
   create_table "commontator_comments", force: :cascade do |t|
@@ -194,9 +195,10 @@ ActiveRecord::Schema.define(version: 20170120142334) do
   create_table "objectives", force: :cascade do |t|
     t.integer  "lesson_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "about_id"
+    t.integer  "tutorial_id"
   end
 
   create_table "portals", force: :cascade do |t|

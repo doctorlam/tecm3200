@@ -18,6 +18,8 @@ class TutorialsController < ApplicationController
   # GET /tutorials/new
   def new
     @tutorial = Tutorial.new
+    @tutorial.objectives.build
+
   end
 
   # GET /tutorials/1/edit
@@ -72,7 +74,7 @@ class TutorialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tutorial_params
-      params.require(:tutorial).permit(:name, :content, :video, {lesson_ids: []}, :lesson, :lesson_id, :attachment)
+      params.require(:tutorial).permit(:name, :content, :video, {lesson_ids: []}, :lesson, :lesson_id, :attachment, objectives_attributes: [:id, :content, :_destroy], classactivitys_attributes: [:id, :content, :_destroy])
     end
     def check_user
       if current_user == authorize_admin

@@ -1,16 +1,36 @@
 <%= simple_form_for(@tutorial) do |f| %>
   <%= f.error_notification %>
-  <div class="form-group">
+  <div class="third-form-group">
     <%= f.input :name, class: 'form-control' %>
-    <%= f.label :content %>
-    <%= f.text_area :content, rows: "30", class: 'form-control' %>
-    <%= f.input :video, class: 'form-control' %>
-    <h2>Add Attachment (if applicable)</h2>
+     <%= f.input :video, class: 'form-control' %>
+    </div>
+    <div class="second-form-group">
+  <h2>Tutorial Objectives</h2>
+    <%= f.fields_for :objectives do |builder| %>
+    <%= render 'objective_fields', f:builder %>
+    <% end %>
+  <%= link_to_add_fields "Add Objective", f, :objectives, class: "btn btn-mini btn-info" %>
+</div>
+<div class="third-form-group">
+  <h2>Class Activities</h2>
+  <%= f.fields_for :classactivitys do |builder| %>
+  <%= render 'classactivity_fields', f:builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Activity", f, :classactivitys, class: "btn btn-mini btn-info" %>
+</div>
+<div class="second-form-group">
+<h2>Add Attachment (if applicable)</h2>
       <%= f.label :attachment %>
       <%= f.file_field :attachment, :class => "form-control-file", class: "form-control" %>
 </div>
+<div class="second-form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: "30", class: 'form-control' %>
+   
+    
+</div>
 
-  <div class="second-form-group">
+  <div class="third-form-group">
 <h2>Connect Tutorial with a Lesson</h2>
 
         <%= hidden_field_tag "tutorial[lesson_ids][]", nil %>

@@ -12,10 +12,22 @@
   	<%= @tutorial.video.html_safe %>
  </div>
  <% end %>
+ <h3><%= image_tag 'bullets.png' %> Tutorial Objectives:</h3>
+		<ul>
+			<% for objective in @tutorial.objectives %>
+			<li><%= objective.content %></li>
+		<% end %>
+		</ul>
 	<div class="tutorial-content">
 		<%= simple_format @tutorial.content.html_safe %>
 	</div>
-  
+ 
+		<h3><%= image_tag 'checks.png' %> To Do:</h3>
+		<ol>
+		<% for classactivity in @tutorial.classactivitys.order(:created_at) %>
+		<li><%= classactivity.content.html_safe %></li>
+		<% end %>
+		</ol>
 <h3><%= image_tag 'attachments.png' %> Tutorial Attachments</h3>
             <% if @tutorial.attachment? %>
                 <ul><li><a target=_blank href=" <%= @tutorial.attachment.url %>"><strong><%= @tutorial.attachment.original_filename %></strong></a></li></ul>
