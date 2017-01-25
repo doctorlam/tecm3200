@@ -38,12 +38,13 @@
                 <% end %>
                   <% if submission.score? %>
                     <td style = "color: green"><%= submission.score %>/<%= assignment.score %></td>
+                    <td><%= link_to "View Comments", submission %></td>
+
                   <% else %>
                     <td style = "color:red">Submitted (worth <%= assignment.fake_score %> points)</td>
+                    <td></td>
                   <% end %>
-                <% for assignment in submission.assignments %>
-                  <td><%= link_to "View Comments", submission %></td>
-                <% end %>
+               
                   
                   <% if submission.document? %>
                 <td><a target=_blank href=" <%= submission.document.url %>"><%= submission.document.original_filename %></a></td>
