@@ -22,7 +22,7 @@
 <div class="col-md-4">
 <h3>Filter by Main:</h3>
 <%= search_form_for @search do |f| %>
-   <%= f.select :user_name_cont, options_from_collection_for_select(User.all.order(:last_name), :name, :last_name), :prompt => 'All Students', class: "form-control" %>
+
    <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.where(:assignment_type => "Main").order(:deadline), :name, :name), :prompt => 'Main Assignments', class: "form-control" %>
 
     &nbsp Clear All<%= link_to(submissions_path) do %>
@@ -39,7 +39,6 @@
 <div class="col-md-4">
 <h3>Filter by Lab:</h3>
 <%= search_form_for @search do |f| %>
-   <%= f.select :user_name_cont, options_from_collection_for_select(User.all.order(:last_name), :name, :last_name), :prompt => 'All Students', class: "form-control" %>
 
 
     <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.where(:assignment_type => "Lab").order(:deadline), :name, :name), :prompt => 'Lab Assignments', class: "form-control" %>
