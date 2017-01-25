@@ -1,9 +1,35 @@
-<div class="second-form-group">
-	<h1>STEP 1 - What Assignment are you turning in?</h1>
+
+	
        <%= hidden_field_tag "submission[assignment_ids][]", nil %>
-        <% Assignment.all.order(:deadline).each do |assignment| %>
-            <%= radio_button_tag "submission[assignment_ids][]", assignment.id, @submission.assignment_ids.include?(assignment.id), id: dom_id(assignment), required: 'required'%>
-            <%= label_tag dom_id(assignment), assignment.name %> | due <%= assignment.deadline %>
-          <br />
-        <% end %>
-</div>
+          <div class="col-md-6">
+
+	          <h2 style ="background: #16a085 !important; color: white !important; text-transform: uppercase; text-align: center">Main Assignment Submission</h2>
+         <% Assignment.all.order(:deadline).each do |assignment| %>
+          <% if assignment.assignment_type == "Main" %>
+
+	            <%= radio_button_tag "submission[assignment_ids][]", assignment.id, @submission.assignment_ids.include?(assignment.id), id: dom_id(assignment), required: 'required'%>
+	            <%= label_tag dom_id(assignment), assignment.name %> | due <%= assignment.deadline %>
+	          <br />
+
+	        <% end %>
+	        <% end %>
+	       	 </div>
+	       	<div class="col-md-6">
+	       	<h2 style ="background: #c0392b !important; color: white !important; text-transform: uppercase; text-align: center">Lab Assignment Submission</h2>
+ 			<% Assignment.all.order(:deadline).each do |assignment| %>
+          		<% if assignment.assignment_type == "Lab" %>
+	          
+	            <%= radio_button_tag "submission[assignment_ids][]", assignment.id, @submission.assignment_ids.include?(assignment.id), id: dom_id(assignment), required: 'required'%>
+	            <%= label_tag dom_id(assignment), assignment.name %> | due <%= assignment.deadline %>
+	          <br />
+	          
+	        <% end %>
+     		 <% end %>
+     		<br />
+	          <br />
+
+     	</div>
+
+
+
+

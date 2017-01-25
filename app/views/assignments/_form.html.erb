@@ -19,6 +19,10 @@
           <br />
         <% end %>
     </div>
+    <div class="second-form-group">
+    <h2>Choose Assignment Type</h2>
+  <%= f.select :assignment_type, options_for_assignment_type, :prompt => 'Select Assignment Type' %>
+</div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_area :name, class: "form-control" %>
