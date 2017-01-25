@@ -16,7 +16,12 @@
     <tbody>
       <% @assignments.each do |assignment| %>
         <tr>
-          <td><%= assignment.name %></td>
+
+         <% if assignment.assignment_type == "Main" %>
+                  <td style ="background: #16a085 !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
+                  <% else %>
+                 <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
+                <% end %>
           <td><%= assignment.description %></td>
           <td><%= assignment.deadline %></td>
           <td><%= link_to 'Show', assignment %></td>
