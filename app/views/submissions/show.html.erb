@@ -32,7 +32,7 @@
                 <li>No Document(s) Attached!</li>
               <% end %>
       </div> 
-    <div class="col-md-4 projects-right">
+    <div class="col-md-5 projects-right">
       <div class="padding-right">
             <h1 style = "text-align: center; border-bottom: none"><strong>Feedback</strong></h1>
             <% for assignment in @submission.assignments %>
@@ -48,7 +48,7 @@
           
               <h3>Instructor Feedback</h3>
                 <% if @submission.feedback? %>
-                    <p><strong><%= simple_format @submission.feedback %></strong></p>
+                    <p><%= simple_format @submission.feedback %></p>
                 <% else %>
                     <p>Dr. Lam didn't leave feedback. That doesn't mean he didn't read your assignment. :)</p>
                 <% end %>
