@@ -7,8 +7,12 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.order('deadline ASC')
-  end
+  @search = Assignment.search(params[:q])
+  @search.sorts = 'deadline' if @search.sorts.empty?
+  @results = @search.result
+  @results = @results.where(:assignment_type => "Main") unless params[:q]
+  @assignments = @results  
+end
 
 
   # GET /assignments/1

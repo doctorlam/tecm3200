@@ -2,7 +2,35 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Homework Assignments</h1>
+<div class="filter">
+<h2>Filter Assignments By:</h2>
+<%= search_form_for @search do |f| %>
+<label>
+<%= f.radio_button :assignment_type_cont, "Main", checked: "checked" %>
+  Main Assignments (Displayed by default)
+</label>
+  &nbsp
+&nbsp
+  <label>
+  <%= f.radio_button :assignment_type_cont, "Lab" %>
+  Lab Assignments
+</label>
+  &nbsp
+&nbsp
+ <label>
+  <%= f.radio_button :assignment_type_cont, "Closed" %>
+  Closed Assignments
+</label>
+   
+  <br>
+   <br><br>
 
+<div class="actions">
+  <%= f.submit "Filter", class: "btn btn-green form-control" %>  
+</div>
+   </div>
+
+<% end %>
   <table class="table table-striped table-responsive">
     <thead>
       <tr>
