@@ -3,11 +3,12 @@
 <h3><%= link_to "All grades", usergrades_path, class: "btn btn-green form-control" %>
 <h1>Admin Gradebook</h1>
 <div class="col-md-4">
+ <div class="filter-box">
 <h3>Filter by Student:</h3>
 <%= search_form_for @search do |f| %>
    <%= f.select :user_name_cont, options_from_collection_for_select(User.all.order(:last_name), :name, :last_name), :prompt => 'All Students', class: "form-control" %>
 
-    &nbsp Clear All<%= link_to(submissions_path) do %>
+    &nbsp<%= link_to(submissions_path) do %>
     <i class="material-icons">cancel</i>
    <% end %>
    <br><br>
@@ -18,14 +19,16 @@
 
   <% end %>
 </div>
+</div>
 
-<div class="col-md-4">
+<div class="col-md-4"> 
+<div class="filter-box">
 <h3>Filter by Main:</h3>
 <%= search_form_for @search do |f| %>
 
    <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.where(:assignment_type => "Main").order(:deadline), :name, :name), :prompt => 'Main Assignments', class: "form-control" %>
 
-    &nbsp Clear All<%= link_to(submissions_path) do %>
+    &nbsp<%= link_to(submissions_path) do %>
     <i class="material-icons">cancel</i>
    <% end %>
    <br><br>
@@ -36,14 +39,15 @@
 
   <% end %>
 </div>
+</div>
 <div class="col-md-4">
+  <div class="filter-box">
 <h3>Filter by Lab:</h3>
 <%= search_form_for @search do |f| %>
 
-
     <%= f.select :assignments_name_cont, options_from_collection_for_select(Assignment.all.where(:assignment_type => "Lab").order(:deadline), :name, :name), :prompt => 'Lab Assignments', class: "form-control" %>
 
-    &nbsp Clear All<%= link_to(submissions_path) do %>
+    &nbsp<%= link_to(submissions_path) do %>
     <i class="material-icons">cancel</i>
    <% end %>
    <br><br>
@@ -54,8 +58,7 @@
 
   <% end %>
 </div>
-
-
+</div>
 <br >
 <br>
 <input type='button' id='hideshow' value='Show/Hide Graded Submissions' class="btn btn-primary">
@@ -82,7 +85,11 @@
 
              <td><%= link_to [submission.user.name, submission.user.last_name].join(" "), submission %></td>
           <% for assignment in submission.assignments %>
-            <td><%= assignment.name %></td>
+          <% if assignment.assignment_type == "Main" %>
+            <td style ="background: #16a085 !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= assignment.name %></td>
+          <% else %>
+            <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= assignment.name %></td>
+          <% end %>
           <% end %>
             <td><%= submission.created_at.to_date %>, <%= submission.created_at %></td>
           <% for assignment in submission.assignments %>

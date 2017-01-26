@@ -47,9 +47,16 @@
 
          <% if assignment.assignment_type == "Main" %>
                   <td style ="background: #16a085 !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
-                  <% else %>
+                  <% end %>
+              <% if assignment.assignment_type == "Lab" %>
+
                  <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
+
                 <% end %>
+          <% if assignment.assignment_type == "Closed" %>
+            <td><%= link_to assignment.name, assignment %></td>
+            <% end %>
+
           <td><%= assignment.description %></td>
           <td><%= assignment.deadline %></td>
           <td><%= link_to 'Show', assignment %></td>
