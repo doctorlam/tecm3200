@@ -3,7 +3,7 @@
        <%= hidden_field_tag "submission[assignment_ids][]", nil %>
           <div class="col-md-6">
 
-	          <h2 style ="background: #16a085 !important; color: white !important; text-transform: uppercase; text-align: center; padding-top: 5px; padding-bottom: 5px">Open Main Assignments</h2>
+	          <h2 style ="background: #16a085 !important; color: white !important; text-transform: uppercase; text-align: center; padding-top: 5px; padding-bottom: 5px">Submit Main Assignment</h2>
          <% Assignment.all.order(:deadline).each do |assignment| %>
           <% if assignment.assignment_type == "Main" %>
           <% if assignment.status == "Open" %>
@@ -16,7 +16,7 @@
 	        <% end %>
 	       	 </div>
 	       	<div class="col-md-6">
-	       	<h2 style ="background: #c0392b !important; color: white !important; text-transform: uppercase; text-align: center; padding-top: 5px; padding-bottom: 5px">Open Lab Assignments</h2>
+	       	<h2 style ="background: #c0392b !important; color: white !important; text-transform: uppercase; text-align: center; padding-top: 5px; padding-bottom: 5px">Submit Lab Assignment</h2>
  			<% Assignment.all.order(:deadline).each do |assignment| %>
           		<% if assignment.assignment_type == "Lab" %>
           		<% if assignment.status == "Open" %>
