@@ -6,19 +6,19 @@
 <h2>Filter Assignments By:</h2>
 <%= search_form_for @search do |f| %>
 <label>
-<%= f.radio_button :assignment_type_cont, "Main", checked: "checked" %>
-  Main Assignments (Displayed by default)
+<%= f.radio_button :status_cont, "Open", checked: "checked" %>
+  Open Assignments (Displayed by default)
 </label>
   &nbsp
 &nbsp
   <label>
-  <%= f.radio_button :assignment_type_cont, "Lab" %>
-  Lab Assignments
+  <%= f.radio_button :status_cont, "Upcoming" %>
+  Upcoming Assignments
 </label>
   &nbsp
 &nbsp
  <label>
-  <%= f.radio_button :assignment_type_cont, "Closed" %>
+  <%= f.radio_button :status_cont, "Closed" %>
   Closed Assignments
 </label>
    
@@ -53,10 +53,7 @@
                  <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
 
                 <% end %>
-          <% if assignment.assignment_type == "Closed" %>
-            <td><%= link_to assignment.name, assignment %></td>
-            <% end %>
-
+         
           <td><%= assignment.description %></td>
           <td><%= assignment.deadline %></td>
           <td><%= link_to 'Show', assignment %></td>

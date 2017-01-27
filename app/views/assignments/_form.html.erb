@@ -21,8 +21,30 @@
     </div>
     <div class="second-form-group">
     <h2>Choose Assignment Type</h2>
-  <%= f.select :assignment_type, options_for_assignment_type, :prompt => 'Select Assignment Type' %>
-</div>
+      <%= f.label :assignment_type, "Main", :value => "true"  %>
+      <%= f.radio_button :assignment_type, "Main", checked: "checked" %>
+        &nbsp
+       &nbsp
+
+      <%= f.label :assignment_type, "Lab", :value => "true"  %>
+      <%= f.radio_button :assignment_type, "Lab" %>
+  </div>
+  <div class="third-form-group">
+    <h2>Select Status</h2>
+      <%= f.label :status, "Open", :value => "true"  %>
+      <%= f.radio_button :status, "Open", checked: "checked"%>
+        &nbsp
+       &nbsp
+
+      <%= f.label :status, "Upcoming", :value => "false"  %>
+      <%= f.radio_button :status, "Upcoming" %>
+       &nbsp
+       &nbsp
+
+      <%= f.label :status, "Closed", :value => "true"  %>
+      <%= f.radio_button :status, "Closed" %>
+       
+  </div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_area :name, class: "form-control" %>
@@ -46,8 +68,9 @@
   <h2>Add Attachment (if applicable)</h2>
       <%= f.label :attachment %>
       <%= f.file_field :attachment, :class => "form-control-file", class: "form-control" %>
+      <br>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Assignment", class: "btn btn-primary" %>
   </div>
 <% end %>
