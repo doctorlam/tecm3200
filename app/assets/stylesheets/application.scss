@@ -617,10 +617,10 @@ code {
 	}
 	
 	.navbar a {
-	text-align: center;
+		float: left;
 	}
 	.navbar-fixed-top .navbar-collapse {
-		max-height: 100% !important;
+		min-height: 100vh !important;
 	}
 	.projects-right {
 		margin-bottom: 10px;
