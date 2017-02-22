@@ -29,7 +29,7 @@
 
             <h3><%= image_tag 'attachments.png' %> Attachments</h3>
             <% if assignment.attachment? %>
-                <ul><li><a target=_blank href=" <%= @assignment.attachment.url %>"><strong><%= assignment.attachment.original_filename %></strong></a></li></ul>
+                <ul><li><a target=_blank href=" <%= assignment.attachment.url %>"><strong><%= assignment.attachment.original_filename %></strong></a></li></ul>
                 <% else %>
                 <li>No Document(s) Attached!</li>
               <% end %>
