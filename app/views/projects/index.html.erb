@@ -23,11 +23,11 @@
 
         <br /><br />
 
-                <p><%= project.description.html_safe %></p>
+                <p><%= simple_format project.description.html_safe %></p>
 
                 <h3>Deliverables</h3>
                 <% for deliverable in project.deliverables %>
-                <ul><li><%= deliverable.description.html_safe %></li></ul>
+                <ul><li><%= simple_format deliverable.description.html_safe %></li></ul>
                 <% end %>
                 
 

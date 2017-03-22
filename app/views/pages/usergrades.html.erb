@@ -4,7 +4,7 @@
 
 
   		<div class="list">
-			<% @usergrades.each_with_index do |user, i| %>
+			<% @usergrades.each do |user| %>
 		
 				<div class="table-responsive usergrades">
 				<h1 class="name student"><strong><%= user.name %> <%=user.last_name %></strong></h1>
@@ -14,7 +14,7 @@
 							<tr>
 							<% for submission in user.submissions %>
 
-				              <td width="30%"><%= (i+1) %>.<%= submission.assignment_name %>:</td>
+				              <td width="30%"><%= submission.assignment_name %>:</td>
 				              <td width="70%"><%= submission.score %> / <% for assignment in submission.assignments %> <%= assignment.score %></td>
 				             </tr>		    
 				             <% end %>
