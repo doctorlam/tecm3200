@@ -1,0 +1,50 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+<h3><%= link_to "All grades", usergrades_path, class: "btn btn-green form-control" %>
+<br>
+<br>
+<%= link_to 'Back to Ungraded', submissions_path, class: "btn btn-primary" %>
+<h1>Graded Assignments</h1>
+
+
+
+<div id="all-grades">
+  <div class="table-responsive">
+    <table class="table table-striped table-condensed table-hover">
+
+       <tbody>
+        <% @submissions.each_with_index do |submission, i| %>
+          <% if submission.score? %>
+            <td><%= (i+1) %>.</td>
+
+             <td><%= link_to [submission.user.name, submission.user.last_name].join(" "), submission %></td>
+          <% for assignment in submission.assignments %>
+          <% if assignment.assignment_type == "Main" %>
+            <td style ="background: #16a085 !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= assignment.name %></td>
+          <% else %>
+            <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= assignment.name %></td>
+          <% end %>
+          <% end %>
+            <td><%= submission.created_at.to_date %>, <%= submission.created_at %></td>
+          <% for assignment in submission.assignments %>
+            <td><%= assignment.deadline %></td>
+          <% end %>
+            <% if submission.score? %>
+              <td style = "color: green !important"><%= submission.score %>/<% for assignment in submission.assignments %><%= assignment.score %> or <%= number_to_percentage(submission.score.to_f * 100 / assignment.score) %><% end %></td>
+            <% else %>
+              <td style = "color: red !important">Not graded yet!</td>
+            <% end %>
+           
+            <td><%= link_to 'Grade', submission %></td>
+                    <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div><!--responsive table close-->
+</div>
+
+<br>  
+</div>

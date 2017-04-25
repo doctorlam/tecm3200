@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   get 'pages/gradebook'
+    get 'pages/graded'
+
   get 'pages/accounts'
   get 'usergrades' => "submissions#usergrades"
  

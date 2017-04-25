@@ -5,7 +5,9 @@ class PagesController < ApplicationController
 
   def policies
   end
-
+  def graded 
+   @submissions = Submission.all
+  end 
 
 
   def gradebook
