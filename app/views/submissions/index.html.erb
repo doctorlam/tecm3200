@@ -79,7 +79,6 @@
        <tbody>
         <% @submissions.each_with_index do |submission, i| %>
 
-        <% if submission.score == nil %>
             <td><%= (i+1) %>.</td>
 
              <td><%= link_to [submission.user.name, submission.user.last_name].join(" "), submission %></td>
@@ -105,7 +104,6 @@
 
           </tr>
         <% end %>
-      <% end %>
       </tbody>
     </table>
   </div><!--responsive table close-->
