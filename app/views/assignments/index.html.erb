@@ -56,6 +56,26 @@
          
           <td><%= assignment.description %></td>
           <td><%= assignment.deadline %></td>
+          <%= form_for(assignment) do |f| %>
+          <td class="wider">
+            <%= f.number_field :score, class: "form-control" %> / <%= assignment.fake_score %></td>
+          <td>
+            <%= f.label :status, "Open" %>
+          <%= f.radio_button :status, "Open" %>
+          <br>
+
+            <%= f.label :status, "Upcoming"  %>
+            <%= f.radio_button :status, "Upcoming" %>
+            <br>
+           <%= f.label :status, "Closed"  %>
+            <%= f.radio_button :status, "Closed" %>
+             </td>
+             <td>
+              <div class="actions">
+                <%= f.submit "Change Status", class:'btn btn-primary'%>
+              </div>
+            </td>
+            <% end %>
           <td><%= link_to 'Show', assignment %></td>
         <% if current_user.try(:admin?) %>
           <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

@@ -39,6 +39,8 @@ gem 'simple_form'
 gem 'listjs-rails'
 gem "switch_user"
 gem 'sendgrid-ruby'
+gem 'bootstrap-datepicker-rails'
+gem 'american_date'
 
 
 group :production do 
