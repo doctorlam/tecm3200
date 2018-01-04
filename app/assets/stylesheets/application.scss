@@ -177,6 +177,7 @@ nav a, nav a:visited {
 	text-decoration: none;
 	text-transform: uppercase;
 }
+
 .navbar {
 	opacity: 0.9;
 	background: transparent !important;
@@ -300,12 +301,9 @@ display: flex;
 	align-items: center;
 }
 
-.tagline {
-	padding-top: 180px;
 
-}
 .tagline h1 {
-	font-size: 4rem !important;
+	font-size: 3rem !important;
 	font-family: 'Josefin Sans', sans-serif;
 	text-align: center !important;
 	letter-spacing: 15px;
@@ -315,7 +313,6 @@ display: flex;
 	margin: 0 auto;
 	padding-left: 15px;
 	padding-top: 20px;
-	border-radius: 20px;
 
 }
 .tagline a, .tagline a:visited {
