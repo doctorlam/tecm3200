@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
    has_attached_file :avatar, :styles => { :medium => "150x150>", :thumb => "30x30" }, :default_url => "missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   acts_as_commontator
-  has_many :posts
-  has_many :responses
+  has_many :posts, dependent: :destroy
+  has_many :responses, dependent: :destroy
   has_many :presentations
 
 
