@@ -59,9 +59,12 @@ nav p {
 }
 li.dropdown li a {
 	font-size: 1rem !important;
-	color: #333333 !important;
+	color: #686868 !important;
 	font-weight: bold;
 	margin-top: 15px !important;
+}
+.dropdown-menu {
+	border: none !important;
 }
 .filter {
 	background: white;
@@ -71,8 +74,8 @@ select {
 	color: black;
 }
 .btn-green {
-	background: #99b3ab !important;
-	border: #99b3ab !important;
+	background: #6EA59F !important;
+	border: #6EA59F !important;
 	color: white !important;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -169,15 +172,15 @@ h1 a:hover {
 
 nav a, nav a:visited {
 	font-size: 0.8rem;
-	color: #99b3ab !important;
+	color: white !important;
 	font-family: 'Muli', sans-serif !important;
 	text-decoration: none;
 	text-transform: uppercase;
 }
 .navbar {
 	opacity: 0.9;
-	background: #2a2a29 !important;
-	border: none;
+	background: transparent !important;
+	border: none !important;
 }
 .navbar-right {
 	padding-right:10px;
@@ -271,7 +274,7 @@ a.add_fields, a.remove_fields {
 	text-align: center;
 }
 .hero-image {
-	height: 400px;
+	height: 500px;
 	background: image-url('hero.jpg'); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -279,6 +282,22 @@ a.add_fields, a.remove_fields {
   background-size: cover;
 	background-repeat:no-repeat;
 	background-position: center center;
+}
+.hero-overlay {
+	height: 500px;
+
+background: rgba(92,157,150,0.92);
+background: -moz-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,0.91) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,0.9) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(1%, rgba(92,157,150,0.92)), color-stop(51%, rgba(133,184,179,0.91)), color-stop(72%, rgba(153,170,202,0.91)), color-stop(100%, rgba(153,170,202,0.9)));
+background: -webkit-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,0.91) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,0.9) 100%);
+background: -o-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,0.91) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,0.9) 100%);
+background: -ms-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,0.91) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,0.9) 100%);
+background: linear-gradient(135deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,0.91) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,0.9) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c9d96', endColorstr='#99aaca', GradientType=1 );	
+display: flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items: center;
 }
 
 .tagline {
@@ -293,10 +312,10 @@ a.add_fields, a.remove_fields {
 	color: white;
 	text-transform: none;
 	border: 2px solid white;	
-	width: 50%;
 	margin: 0 auto;
 	padding-left: 15px;
 	padding-top: 20px;
+	border-radius: 20px;
 
 }
 .tagline a, .tagline a:visited {
