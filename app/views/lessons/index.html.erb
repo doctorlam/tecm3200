@@ -3,18 +3,16 @@
 <% if current_user.try(:admin?) %>
 <%= link_to 'New Lesson', new_lesson_path, class: "btn btn-default" %>
 <% end %>
-<h1>Course Schedule</h1>
 <div class="filter">
-<h2>Filter Schedule By:</h2>
 <%= search_form_for @search do |f| %>
 <label>
-<%= f.radio_button :lesson_type_cont, "Main", checked: "checked" %>
+<%= f.radio_button :lesson_type_cont, "Main", checked: "checked", onclick: "$(this).closest('form').submit();" %>
   View Main Class Schedule (Displayed by default)
 </label>
   &nbsp
 &nbsp
   <label>
-  <%= f.radio_button :lesson_type_cont, "Lab" %>
+  <%= f.radio_button :lesson_type_cont, "Lab", onclick: "$(this).closest('form').submit();" %>
   View Lab Schedule
 </label>
    
@@ -22,11 +20,7 @@
   <br>
   
    <br><br>
-
-<div class="actions">
-  <%= f.submit "Filter", class: "btn btn-green form-control" %>  
-</div>
-   </div>
+  </div>
 
 <% end %>
 <div class="table-responsive">

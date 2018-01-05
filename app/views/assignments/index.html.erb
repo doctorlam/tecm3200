@@ -3,31 +3,28 @@
 
   <h1>Homework Assignments</h1>
 <div class="filter">
-<h2>Filter Assignments By:</h2>
 <%= search_form_for @search do |f| %>
 <label>
-<%= f.radio_button :status_cont, "Open", checked: "checked" %>
+<%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();" %>
   Open Assignments (Displayed by default)
 </label>
   &nbsp
 &nbsp
   <label>
-  <%= f.radio_button :status_cont, "Upcoming" %>
+  <%= f.radio_button :status_cont, "Upcoming", onclick: "$(this).closest('form').submit();" %>
   Upcoming Assignments
 </label>
   &nbsp
 &nbsp
  <label>
-  <%= f.radio_button :status_cont, "Closed" %>
+  <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();" %>
   Closed Assignments
 </label>
    
   <br>
    <br><br>
 
-<div class="actions">
-  <%= f.submit "Filter", class: "btn btn-green form-control" %>  
-</div>
+
    </div>
 
 <% end %>
@@ -72,7 +69,7 @@
              </td>
              <td>
               <div class="actions">
-                <%= f.submit "Change Status", class:'btn btn-primary'%>
+                <%= f.submit "Change Status", class:'btn btn-green'%>
               </div>
             </td>
             <% end %>

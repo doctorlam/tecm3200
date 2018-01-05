@@ -57,6 +57,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c9d96', end
 	border-radius: 5px;
 
 }
+.filter label {
+	font-family: 'Muli';
+	font-weight: 700;
+	font-size: 1rem;
+
+}
 .tutorial-content p {
 	font-size: 20px !important;
 }
@@ -243,7 +249,7 @@ h3 {
 	font-size: 1.5rem;
 }
 .show-left {
-	background-color: #E7E7E7;
+	background-color: white;
 }
 .show-right, .show-right a, .show-right a:visited {
 	background: #2a2a29;
