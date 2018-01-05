@@ -65,10 +65,22 @@
     <%= f.label :score, 'Points' %><br>
     <%= f.number_field :score, class: "form-control" %>
   </div>
-  <h2>Add Attachment (if applicable)</h2>
+
+
+  <div class="field">
+   <% if @assignment.attachment.exists? %>
+     
+      <%= f.check_box :delete_document %> Remove <%= @assignment.attachment.original_filename %>
+  <% else %>
+      <h2>Add Attachment (if applicable)</h2>
       <%= f.label :attachment %>
       <%= f.file_field :attachment, :class => "form-control-file", class: "form-control" %>
       <br>
+     
+
+  <% end %>
+  </div>
+  
 
   <div class="actions">
     <%= f.submit "Create Assignment", class: "btn btn-primary" %>

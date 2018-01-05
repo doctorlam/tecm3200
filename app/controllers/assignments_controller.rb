@@ -78,7 +78,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit({lesson_ids: []}, {submission_ids: []}, :lesson, :score, :fake_score, :lesson_id, :submission, :submission_id, :name, :description, :deadline, :attachment, :assignment_type, :status)
+      params.require(:assignment).permit({lesson_ids: []}, {submission_ids: []}, :lesson, :score, :fake_score, :lesson_id, :submission, :submission_id, :name, :description, :deadline, :attachment, :delete_document, :assignment_type, :status)
     end
     def check_user
       if current_user == authorize_admin

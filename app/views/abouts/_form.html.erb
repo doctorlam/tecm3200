@@ -45,6 +45,17 @@
     <% end %>
       <%= link_to_add_fields "Add Vital Course Info", f, :vitals, class: "btn btn-mini btn-info" %>
 
+        <div class="field">
+   <% if @about.document.exists? %>
+     
+      <%= f.check_box :delete_document %> Remove <%= @about.document.original_filename %>
+  <% else %>
+      <%= f.label :document %>
+      <%= f.file_field :document, :class => "form-control-file", class: "form-control" %>
+     
+
+  <% end %>
+  </div>
         <%= f.label :syllabus %>
         <%= f.file_field :document, :class => "form-control-file", class: "form-control" %>
 
