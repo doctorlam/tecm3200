@@ -14,6 +14,248 @@
  *= require_self
 *= require commontator/application
 */
+
+/* =======NOTES AND SLIDES ========*/
+
+.material-icons {
+	font-size: 74px !important;
+}
+.center {
+	text-align: center !important;
+}
+.right {
+	text-align: right !important;
+}
+.left {
+	text-align: left !important;
+}
+.slide h1 {
+	border-bottom: 1px solid #e67e22;
+	padding-top: 30px;
+	font-size: 2.4rem !important;
+}
+.quote {
+  quotes: "“" "”";
+}
+.quote::before {
+	content: open-quote;
+	font-size: 100px;
+	font-family: 'Cardo';
+	text-align: center;
+}
+
+.quote {
+	background: white !important;
+	color: black !important;
+	padding: 50px 20px 50px 20px;
+	border-radius: 5px !important;
+	text-align: left;
+	font-size: 1.5rem;
+	line-height: 2.2rem;
+	font-style: italic;
+	font-family: 'open sans condensed'
+}
+
+.slide-content-flex {
+	display: flex;
+	flex-direction: row;
+	overflow: auto;
+	height: 89%;
+	padding-bottom: 40px;
+}
+
+.slide-content, .slide-image {
+	flex:1;
+	margin-left: 15px;
+	margin-right: 15px;
+	align-self: center;
+	margin-bottom: 20px;
+}
+.slide-image {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+}
+.slide-content p {
+	text-align: center;
+}
+.slide h1 {
+	text-align: center;
+}
+.slick-prev::before, .slick-next::before {
+  color: #000;
+}
+
+.slick-dots li button:before
+ {
+	color: black !important;
+	font-size: 24px;
+}
+.slide-content li, .slide-content p {
+	font-size: 1.4rem !important;
+	line-height: 1.8rem;
+	font-family: 'Dosis' !important;
+}
+.fullscreen-fonts li, .fullscreen-fonts p {
+	font-size: 2.2rem !important; 
+	line-height: 3rem;
+
+}
+.fullscreen-fonts h3 {
+	font-size: 2.4rem !important;
+}
+.slide h2 {
+	font-size: 2.2rem !important;
+	line-height: 2.7rem;
+	font-family: 'Dosis' !important;
+	border-bottom: 1px solid gray;
+	text-align: center;
+}
+.slide h3 {
+	font-size: 1.9rem !important;
+	line-height: 2.4rem;
+	font-family: 'Dosis' !important;
+		text-align: center;
+}
+
+.slide li {
+	margin-bottom: 10px;
+	margin-left: 25px;
+	font-weight: normal;
+}
+.slide-image {
+	height: 100%;
+}
+.slide-image img {
+	object-fit:contain;
+	width: 100%;
+	height: 85%;
+	align-self: center;
+}
+.slide-form {
+	background: #BDC3C7;
+	margin-bottom: 20px;
+	height: 100%;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.slide-overlay {
+		background: rgba(52, 73, 94,0.6);
+	  	height: 70vh;
+}
+.slide-bgimage, .slide-bgcolor {
+	height: 70vh;
+}
+.slide-image caption {
+	font-family: 'Dosis';
+	font-size: 12px;
+}
+#full.fullscreen .slide-bgimage, #full.fullscreen .slide-bgcolor, #full.fullscreen .slide-overlay {
+	height: 91vh;
+	width: 100%;
+}
+button.off {
+	display: none;
+}
+#full.fullscreen {
+    z-index: 9999; 
+    width: 100%; 
+    height: 100vh !important; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    background: white;
+ }
+#full.slide.slick-initialized.slick-slider.fullscreen {
+	background: white;
+}
+
+input.numeric {
+	font-size: 24px !important;
+	font-weight: bold;
+}
+body {
+	background: #F0F0F0;
+}
+.take-notes {
+	border: 1px solid black;
+	padding: 10px;
+}
+h3.connection {
+	color: black !important;
+	padding: 10px;
+	font-size: 1rem !important;
+	position: absolute;
+	bottom: -10px;
+	left: -5px;
+	width: 100%;
+}
+h3.connection a {
+	color: black !important;
+	text-decoration: underline;
+	
+}
+
+.no-connection {
+position: absolute;
+	bottom: 10px;
+	width: 90%;	
+}
+.no-connection select {
+	width: 90%;
+}
+select.pin-dropdown {
+	width: 90%;
+}
+.notes {
+	background: #FFFFA5 !important;
+	padding: 20px;
+	width: 80%;
+	margin: 0 auto;
+}
+.note-box  {
+	margin-bottom: 20px;
+}
+.notes h2 {
+	margin-bottom: 20px;
+	border-bottom: 1px solid black;
+	padding-bottom: 20px;
+}
+.notes p, .notes ul {
+	margin-top: 20px !important;
+		margin-bottom: 0px !important;
+}
+.notes img {
+	max-width: 100%;
+}
+.note-box a, .note-box a {
+	text-decoration: none;
+}
+.note-box {
+		background: #FFFFA5 !important;
+
+	height: 300px;
+	position: relative;
+	padding: 10px;
+}
+.note-box .links {
+	margin-top: -10px;
+	font-size: 0.65rem;
+}
+.note-box h2 {
+	border-bottom: 1px solid black;
+	text-decoration: none !important;
+}
+.note-box h3 {
+	font-size: 14px;
+}
+.notes h3 {
+	font-size: 16px;
+}
+
+/*==========NEW FORM STYLES==========*/
 .form-container {
 	background: rgba(92,157,150,1);
 background: -moz-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);

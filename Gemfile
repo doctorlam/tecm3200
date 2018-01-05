@@ -42,6 +42,8 @@ gem 'sendgrid-ruby'
 gem 'bootstrap-datepicker-rails'
 gem 'american_date'
 gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
+gem 'bxslider-rails'
+gem "jquery-slick-rails"
 
 
 group :production do 

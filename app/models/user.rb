@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :responses, dependent: :destroy
   has_many :presentations
+  has_many :notes, dependent: :destroy
 
 
 end
