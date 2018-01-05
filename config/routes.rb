@@ -30,4 +30,7 @@ root :to => 'abouts#index'
 resources :lessons
   get 'pages/policies'
 
+if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
