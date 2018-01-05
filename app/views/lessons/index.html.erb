@@ -10,7 +10,7 @@
 </div>
 
 <div class="table-responsive">
-<table class="table table-bordered">
+<table class="table table-bordered table-lessons">
   <thead>
     <tr>
       <th><%= sort_link @search, :lesson_type, "Class Type" %></th>
@@ -52,7 +52,10 @@
       </td>
 
 
-        <td><%= link_to 'View Lesson', lesson %></td>
+        <td><%= link_to lesson do %>
+              <i class="material-icons">pageview</i>
+          <% end %>
+</td>
         <% if current_user.try(:admin?) %>
         <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
         <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -18,7 +18,9 @@
         <td><%= (i+1) %>.</td>
         <td><%= link_to tutorial.name, tutorial %></td>
       
-        <td><%= link_to 'Show', tutorial %></td>
+        <td><%= link_to tutorial do %>
+              <i class="material-icons">pageview</i>
+          <% end %></td>
       <% if current_user.try(:admin?) %>
 
         <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>

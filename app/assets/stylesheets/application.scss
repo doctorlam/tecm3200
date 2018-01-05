@@ -13,13 +13,12 @@
  *= require_tree .
  *= require_self
 *= require commontator/application
+
 */
 
 /* =======NOTES AND SLIDES ========*/
 
-.material-icons {
-	font-size: 74px !important;
-}
+
 .center {
 	text-align: center !important;
 }
@@ -295,10 +294,10 @@ a.lab-button:hover {
 }
 .table-lessons {
 	border-radius: 15px;
-		
+	color: #2b2b2b;
 }
 .table-lessons a, .table-lessons a:visited {
-	color: black;
+	color: #2b2b2b;
 }
 /*==========NEW FORM STYLES==========*/
 .form-container {
