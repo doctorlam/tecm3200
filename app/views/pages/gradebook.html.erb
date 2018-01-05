@@ -29,7 +29,7 @@
                 <% if assignment.assignment_type == "Main" %>
                   <td style ="background: #16a085 !important; font-size: 1.1rem !important; text-align: center; color: white !important; text-transform: uppercase" class="lesson_type"><%= link_to assignment.name, submission %></td>
                   <% else %>
-                 <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white; text-transform: uppercase" class="lesson_type"><%= link_to assignment.name, submission %></td>
+                 <td style ="background: #F2784B !important; font-size: 1.1rem !important; text-align: center; color: white; text-transform: uppercase" class="lesson_type"><%= link_to assignment.name, submission %></td>
                 <% end %>
                 <% end %>
                   <td><%= submission.created_at.to_date %>, <%= submission.created_at %></td>
