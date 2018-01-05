@@ -1,6 +1,6 @@
 
    <h2>Hi <%= @user.name %>!</h2>
-   	<p>The assignment, <% for assignment in @submission.assignments %><%= assignment.name %><% end %>, has been graded!
+   	<p>The assignment, <% for assignment in @submission.assignments %><span style="color: red"><%= assignment.name %></span><% end %>, has been graded!
 
    	<h3>Score</h3>
    	  <p>You received a <%= @submission.score %> out of <% for assignment in @submission.assignments %> <%= assignment.score %><% end %></p>
@@ -11,7 +11,9 @@
    	 <% else %>
    	 	<p>No feedback was provided.</p>
    	 <% end %>
+<br>
 
-    <p>Go to the <a href="http://tecm3200.herokuapp.com">course website</a> to view all your grades.</p>
-    <p>Thanks! Dr. Lam</p>
+    <p>Please visit the <a href="http://tecm3200.herokuapp.com">course website</a> to view all your grades.</p>
+    <p>Thanks!</p>
+    <p>Dr. Lam</p>
 

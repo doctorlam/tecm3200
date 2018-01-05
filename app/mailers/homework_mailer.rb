@@ -6,7 +6,7 @@ class HomeworkMailer < ApplicationMailer
   		@assignment = Assignment.all
   		@submission = submission
   		@user = user
-    	mail(to: user.email, subject: 'An assignment has been graded!')
+    	mail(to: user.email, subject: 'TECM 3200: An assignment has been graded!')
   end
 end
 
