@@ -2,18 +2,21 @@
 
 <% if current_user.try(:admin?) %>
 <%= link_to 'New Lesson', new_lesson_path, class: "btn btn-default" %>
+<br><br>
 <% end %>
 <div class="filter">
 <%= search_form_for @search do |f| %>
 <label>
 <%= f.radio_button :lesson_type_cont, "Main", checked: "checked", onclick: "$(this).closest('form').submit();" %>
-  View Main Class Schedule (Displayed by default)
+  Main Class Schedule (Displayed by default)
 </label>
+  &nbsp
+&nbsp
   &nbsp
 &nbsp
   <label>
   <%= f.radio_button :lesson_type_cont, "Lab", onclick: "$(this).closest('form').submit();" %>
-  View Lab Schedule
+  Lab Schedule
 </label>
    
   
@@ -24,7 +27,7 @@
 
 <% end %>
 <div class="table-responsive">
-<table class="table table-hover table-striped">
+<table class="table table-lessons">
   <thead>
     <tr>
       <th><%= sort_link @search, :lesson_type, "Class Type" %></th>
@@ -41,7 +44,7 @@
     <% @lessons.each do |lesson| %>
       <tr>
       <% if lesson.lesson_type == "Main" %>
-        <td style ="background: #16a085 !important; font-size: 1.1rem !important; text-align: center; color: white !important; text-transform: uppercase" class="lesson_type"><%= lesson.lesson_type %></td>
+        <td style ="background: #6EA59F !important; font-size: 1.1rem !important; text-align: center; color: white !important; text-transform: uppercase" class="lesson_type"><%= lesson.lesson_type %></td>
       <% else %>
         <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white; text-transform: uppercase" class="lesson_type"><%= lesson.lesson_type %></td>
       <% end %>

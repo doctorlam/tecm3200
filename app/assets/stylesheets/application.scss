@@ -254,7 +254,36 @@ select.pin-dropdown {
 .notes h3 {
 	font-size: 16px;
 }
+.lesson_search {
+	display:flex;
+	align-items: center;
+}
+.filter {
+	background: #674172 !important;
+	display:flex;
+	align-items: center;
+	color: white;
+		border-radius: 15px;
+	margin-bottom: 15px;
 
+}
+.main-button {
+}
+.table-lessons {
+	border-radius: 15px;
+		color: white;
+		background: rgba(92,157,150,1);
+background: -moz-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(1%, rgba(92,157,150,1)), color-stop(51%, rgba(133,184,179,0.91)), color-stop(72%, rgba(153,170,202,0.91)), color-stop(100%, rgba(153,170,202,0.9)));
+background: -webkit-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,0.9) 100%);
+background: linear-gradient(135deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c9d96', endColorstr='#99aaca', GradientType=1 );
+}
+.table-lessons a, .table-lessons a:visited {
+	color: white;
+}
 /*==========NEW FORM STYLES==========*/
 .form-container {
 	background: rgba(92,157,150,1);
