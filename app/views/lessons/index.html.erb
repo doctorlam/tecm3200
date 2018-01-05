@@ -5,29 +5,12 @@
 <br><br>
 <% end %>
 <div class="filter">
-<%= search_form_for @search do |f| %>
-<label>
-<%= f.radio_button :lesson_type_cont, "Main", checked: "checked", onclick: "$(this).closest('form').submit();" %>
-  Main Class Schedule (Displayed by default)
-</label>
-  &nbsp
-&nbsp
-  &nbsp
-&nbsp
-  <label>
-  <%= f.radio_button :lesson_type_cont, "Lab", onclick: "$(this).closest('form').submit();" %>
-  Lab Schedule
-</label>
-   
-  
-  <br>
-  
-   <br><br>
-  </div>
+  <%= link_to "Main Schedule", lessons_path, class: 'main-button' %>
+  <%= link_to "Lab Schedule", "http://tecm3200.herokuapp.com/lessons?utf8=%E2%9C%93&q%5Blesson_type_cont%5D=Lab&commit=Filter", class: 'lab-button' %>
+</div>
 
-<% end %>
 <div class="table-responsive">
-<table class="table table-lessons">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th><%= sort_link @search, :lesson_type, "Class Type" %></th>
@@ -46,7 +29,7 @@
       <% if lesson.lesson_type == "Main" %>
         <td style ="background: #6EA59F !important; font-size: 1.1rem !important; text-align: center; color: white !important; text-transform: uppercase" class="lesson_type"><%= lesson.lesson_type %></td>
       <% else %>
-        <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white; text-transform: uppercase" class="lesson_type"><%= lesson.lesson_type %></td>
+        <td style ="background: #F2784B !important; font-size: 1.1rem !important; text-align: center; color: white; text-transform: uppercase" class="lesson_type"><%= lesson.lesson_type %></td>
       <% end %>
 
         <td class="week"><%= link_to lesson.week, lesson %></td>

@@ -259,30 +259,46 @@ select.pin-dropdown {
 	align-items: center;
 }
 .filter {
-	background: #674172 !important;
 	display:flex;
 	align-items: center;
 	color: white;
 		border-radius: 15px;
 	margin-bottom: 15px;
-
 }
+
 .main-button {
+	background: #6FA59F;
+	padding: 25px;
+	border-radius: 50px;
+	margin-right: 30px;
+}
+a.main-button, a.main-button:visited {
+	color: white !important;
+	text-decoration: none;
+	font-size: 1.1rem;
+}
+a.main-button:hover {
+	background: #5f8e89 !important;
+}
+.lab-button {
+	background: #F2784B;
+		padding: 25px;
+	border-radius: 50px;
+}
+a.lab-button, a.lab-button:visited {
+	color: white !important;
+	text-decoration: none;
+	font-size: 1.1rem;
+}
+a.lab-button:hover {
+	background: #d85627 !important;
 }
 .table-lessons {
 	border-radius: 15px;
-		color: white;
-		background: rgba(92,157,150,1);
-background: -moz-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(1%, rgba(92,157,150,1)), color-stop(51%, rgba(133,184,179,0.91)), color-stop(72%, rgba(153,170,202,0.91)), color-stop(100%, rgba(153,170,202,0.9)));
-background: -webkit-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,0.9) 100%);
-background: linear-gradient(135deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c9d96', endColorstr='#99aaca', GradientType=1 );
+		
 }
 .table-lessons a, .table-lessons a:visited {
-	color: white;
+	color: black;
 }
 /*==========NEW FORM STYLES==========*/
 .form-container {
@@ -378,10 +394,7 @@ li.dropdown li a {
 .dropdown-menu {
 	border: none !important;
 }
-.filter {
-	background: white;
-	padding: 15px;
-}
+
 select {
 	color: black;
 }
