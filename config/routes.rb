@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    resources :slidedecks
+  resources :notes
   resources :tutorials
   resources :presentations
   resources :grades

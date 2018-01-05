@@ -1,0 +1,16 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+<div class="notes">
+  <h2><%= @note.title %> | <%= @note.created_at.strftime("%m-%d-%Y") %> at <%=@note.created_at.strftime("%H:%M %p") %></h2>
+<% if @note.slidedeck_id? %>
+	<h3 class="connection">Pinned to: <%= link_to @note.slidedeck.try(:title), @note.slidedeck %></h3>
+<% else %>
+	<h3 class="no-connection">Not Pinned</h3>
+<% end %>
+  	<%= @note.content.html_safe %>
+
+
+<%= link_to 'Edit Note', edit_note_path(@note) %> |
+<%= link_to 'All Notes', notes_path %>
+</div>
+</div>

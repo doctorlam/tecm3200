@@ -1,0 +1,78 @@
+
+<div class="slide-form-inside">
+<fieldset>
+<table class="table table-striped">
+
+<tbody>
+<tr class="flex">
+	<td class="center">
+		  <%= f.hidden_field :_destroy %>
+		<%= link_to "----", '#', class: "remove_fields" %>
+	<td>
+
+	<h2><%= f.label :slide_order, "#" %><%= f.text_field :slide_order, class: "slide_order" %></h2>
+		<br>
+ 		<% if f.object.bgimage? %>
+	    	<%= image_tag f.object.bgimage(:thumb) %>
+
+  			<%= f.check_box :delete_image %> Remove Image
+		<% else %>
+ 		 <%= f.file_field :bgimage %>
+		<% end %>
+			<br>
+
+			<%= f.label :bgcolor, "BG Color" %>
+			<br>
+			<%= f.select :bgcolor, options_for_select([["White", "#ecf0f1"],["Blue", "#2980b9"], ["Green", "#16a085"], ["Purple", "#8e44ad"], ["Orange", "#e67e22"], ["Dark Blue", "#34495e"],["BG Image", "transparent"]], :selected => f.object.bgcolor) %><br>
+
+			<br>
+		<%= f.label :color_scheme, "Text Color" %><br>
+    	<%= f.select :color_scheme, ['black', 'white'] %>	
+	</td>
+	<td class="form-content"><div class="slide-form">
+	
+	    <%= f.input :title, class: "form-control" %> 
+	    <br>
+	 <div class="form-field">
+	  <% if f.object.image? %>
+	    	<%= image_tag f.object.image(:thumb) %>
+
+  			<%= f.check_box :delete_image %> Remove Image
+
+		<% else %>
+ 		 <%= f.file_field :image %>
+		<% end %>
+		<br>
+
+	   	<%= f.label :caption, "Image Caption" %><br>
+	   	<%= f.text_field :caption, class: 'form-control' %><br>
+
+	 </div>
+
+	  
+	  <div class="row">
+	     <div class="col-md-6">
+	      	<%= f.fields_for :contentmodules do |builder| %>
+	    		<%= render 'contentmodule_fields', f:builder %>
+	  		<% end %>
+	 	<div class="row">
+	  		<%= link_to_add_fields "+ Paragraph", f, :contentmodules %>
+		</div>
+		</div><!--/col-md-6-->
+
+		<div class="col-md-6">
+			<%= f.fields_for :bulleted_lists do |builder| %>
+		    		<%= render 'bulleted_list_fields', f:builder %>
+		  		<% end %>
+			 <div class="row">
+			  	<%= link_to_add_fields "+ List", f, :bulleted_lists %>
+			</div>
+		</div><!--/col-md-6-->
+	</div><!--/row-->
+	</div> <!--/slideform-->
+	</td>
+</tbody>
+</table>
+</fieldset>
+
+</div>

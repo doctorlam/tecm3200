@@ -1,0 +1,1 @@
+json.partial! "slidedecks/slidedeck", slidedeck: @slidedeck

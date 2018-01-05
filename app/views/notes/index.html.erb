@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+<h1>My Notes</h1>
+<div class="row">
+    <% @notes.each do |note| %>
+    <div class="col-md-4">
+
+      <%= link_to note do %> 
+        <div class="note-box">
+        <h2><%= note.title %> </h2>
+        <h3><%= note.created_at.strftime("%m-%d-%Y") %> taken at <%=note.created_at.strftime("%H:%M %p") %></h3>
+        <div class="links">
+        <%= link_to 'Show', note %> |
+        <%= link_to 'Edit', edit_note_path(note) %> |
+        <%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div><!--links-->
+      <% end %>
+
+    <% if note.slidedeck_id? %>
+    <h3 class="connection"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDMxOS44MDggMzE5LjgwOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzE5LjgwOCAzMTkuODA4OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTMxNy4xNiwxNTkuNDcxYy0xNi4xOTctMTYuMTk5LTQxLjE5NS0yNC40MS03NC4zMDctMjQuNDFjLTcuMDEsMC0xNC40MDgsMC4zNzktMjIuMDQ3LDEuMTIxbC03OS43MjktNzUuMzQ2bDE5LjA0LTE5LjAzNSAgIGMzLjUyOS0zLjUzMSwzLjUyOS05LjI1Mi0wLjAwMy0xMi43ODVsLTI2LjQyLTI2LjQyNGMtMy4zOS0zLjM5MS05LjM5NC0zLjM5MS0xMi43ODQsMEwyLjY0OCwxMjAuODYzICAgYy0zLjUzMSwzLjUzMS0zLjUzMSw5LjI1Mi0wLjAwMiwxMi43ODNsMjYuNDE2LDI2LjQxNmMxLjY5NywxLjY5NSwzLjk5NSwyLjY0OCw2LjM5NCwyLjY0OGMyLjM5NywwLDQuNjk3LTAuOTUzLDYuMzkyLTIuNjQ4ICAgbDE5LjA0Mi0xOS4wMzVsNzUuMzQ2LDc5LjcyNmMtMy4wNDgsMzEuMzUyLTEuMDU3LDcyLjAxOCwyMy4yODQsOTYuMzU4YzEuNzY2LDEuNzY2LDQuMDc5LDIuNjQ4LDYuMzkxLDIuNjQ4ICAgYzIuMzE0LDAsNC42MjktMC44ODQsNi4zOTUtMi42NDhsNjYuMDM1LTY2LjA0MWw1MC41NzgsNTAuNTgyYzEuNzY4LDEuNzY2LDQuMDgsMi42NDgsNi4zOTUsMi42NDggICBjMi4zMTIsMCw0LjYyOS0wLjg4NCw2LjM5My0yLjY0OGMzLjUzMS0zLjUzMSwzLjUzMS05LjI1NCwwLTEyLjc4NWwtNTAuNTgyLTUwLjU4bDY2LjAzNy02Ni4wMyAgIEMzMjAuNjkxLDE2OC43MjUsMzIwLjY5MSwxNjMuMDA1LDMxNy4xNiwxNTkuNDcxeiBNMTY2LjUwNSwyOTcuMzM0Yy0xNC42MTQtMjEuMTcyLTE0LjctNTMuODAzLTExLjg1OS03OC43NDMgICBjMC4zLTIuNjQ4LTAuNTgxLTUuMjk3LTIuNDEzLTcuMjNsLTg0LjU4OS04OS41MTZjLTEuNjc4LTEuNzc1LTQuMDAyLTIuNzkxLTYuNDQzLTIuODI2Yy0wLjA0MiwwLTAuMDg2LDAtMC4xMjgsMCAgIGMtMi4zOTcsMC00LjY5NywwLjk1My02LjM5MiwyLjY0N2wtMTkuMjI1LDE5LjIyMWwtMTMuNjMyLTEzLjYzMUwxMjcuMzAzLDIxLjc2OWwxMy42MzYsMTMuNjQxTDEyMS43MTYsNTQuNjMgICBjLTEuNzI2LDEuNzMtMi42OCw0LjA3OC0yLjY0Niw2LjUyNWMwLjAzNSwyLjQzNiwxLjA1Nyw0Ljc2OCwyLjgzMiw2LjQ0M2w4OS41MDcsODQuNTgyYzEuOTM2LDEuODM2LDQuNTc0LDIuNzE5LDcuMjMsMi40MSAgIGM4LjQ1NS0wLjk2MywxNi42MDItMS40NDksMjQuMjEzLTEuNDQ5YzIzLjQ2NSwwLDQxLjc1Niw0LjQ2OSw1NC41MzksMTMuMzE0TDE2Ni41MDUsMjk3LjMzNHoiIGZpbGw9IiM2YmEzNDMiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /> Pinned to: <%= link_to note.slidedeck.try(:title), note.slidedeck %></h3>
+  
+<% else %>
+<div class="no-connection">
+  <%= simple_form_for(note) do |f| %>
+          <%= f.collection_select(:slidedeck_id, @slidedecks.order('created_at ASC'), :id, :title, :include_blank => "Pin this note to a presentation", ) %><br><br>
+
+      <%= f.button :submit, "Pin!", class: 'btn btn-success form-control'
+ %>
+   <% end %>
+ </div>
+<% end %>
+
+      
+      </div>
+    </div><!--col-md-4-->
+
+    <% end %>
+    </div><!-- row -->
+
+
+<br>
+
+<%= link_to 'New Note', new_note_path, class: 'btn btn-primary' %>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127154515) do
+ActiveRecord::Schema.define(version: 20171009175500) do
 
   create_table "abouts", force: :cascade do |t|
     t.text     "name"
@@ -44,6 +44,25 @@ ActiveRecord::Schema.define(version: 20170127154515) do
     t.string   "assignment_type"
     t.string   "status"
   end
+
+  create_table "bulleted_lists", force: :cascade do |t|
+    t.text     "list"
+    t.integer  "slide_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "bullet_id"
+  end
+
+  add_index "bulleted_lists", ["slide_id"], name: "index_bulleted_lists_on_slide_id"
+
+  create_table "bullets", force: :cascade do |t|
+    t.text     "list_item"
+    t.integer  "bulleted_list_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "bullets", ["bulleted_list_id"], name: "index_bullets_on_bulleted_list_id"
 
   create_table "classactivities", force: :cascade do |t|
     t.integer  "lesson_id"
@@ -94,6 +113,19 @@ ActiveRecord::Schema.define(version: 20170127154515) do
   end
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
+
+  create_table "contentmodules", force: :cascade do |t|
+    t.text     "modular_content"
+    t.integer  "slide_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "modularimage_file_name"
+    t.string   "modularimage_content_type"
+    t.integer  "modularimage_file_size"
+    t.datetime "modularimage_updated_at"
+  end
+
+  add_index "contentmodules", ["slide_id"], name: "index_contentmodules_on_slide_id"
 
   create_table "course_infos", force: :cascade do |t|
     t.text     "description"
@@ -185,6 +217,7 @@ ActiveRecord::Schema.define(version: 20170127154515) do
     t.integer  "presentation_id"
     t.integer  "tutorial_id"
     t.string   "lesson_type"
+    t.string   "slidedeck_link"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -192,6 +225,15 @@ ActiveRecord::Schema.define(version: 20170127154515) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "about_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "slidedeck_id"
   end
 
   create_table "objectives", force: :cascade do |t|
@@ -278,6 +320,41 @@ ActiveRecord::Schema.define(version: 20170127154515) do
     t.text     "project_id"
   end
 
+  create_table "slidedecks", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "slides", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "slidedeck_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "image"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "bgimage_file_name"
+    t.string   "bgimage_content_type"
+    t.integer  "bgimage_file_size"
+    t.datetime "bgimage_updated_at"
+    t.integer  "slide_order"
+    t.string   "bgcolor"
+    t.text     "color_scheme"
+    t.integer  "contentmodule_id"
+    t.integer  "bulleted_list_id"
+    t.text     "caption"
+  end
+
+  add_index "slides", ["slidedeck_id"], name: "index_slides_on_slidedeck_id"
+
   create_table "submissions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "assignment_id"
@@ -349,6 +426,7 @@ ActiveRecord::Schema.define(version: 20170127154515) do
     t.datetime "avatar_updated_at"
     t.string   "phonenumber"
     t.string   "last_name"
+    t.integer  "note_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

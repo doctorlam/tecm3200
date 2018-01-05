@@ -1,0 +1,31 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1><%= image_tag 'present.png' %> Presentations</h1>
+
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slidedecks.each do |slidedeck| %>
+      <tr>
+        <td><%= slidedeck.title %></td>
+        <td><%= link_to 'View', slidedeck %></td>
+     <% if current_user.try(:admin?) %>
+        <td><%= link_to 'Edit', edit_slidedeck_path(slidedeck) %></td>
+        <td><%= link_to 'Destroy', slidedeck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slidedeck', new_slidedeck_path %>
+</div>

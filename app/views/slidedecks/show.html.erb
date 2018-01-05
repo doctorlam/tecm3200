@@ -1,0 +1,155 @@
+<script>
+$(document).on('turbolinks:load', function() {
+  $('.slide').slick({
+    dots: true
+  });
+});
+</script>
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+  <h1><%= @slidedeck.title %></h1>
+<div class="row">
+<div class="col-md-8" id ="full">
+<div class="slide">
+
+<% for @slide in @slidedeck.slides.sort_by(&:slide_order) %>
+
+		<div class="slide-container">
+
+
+		<div class="slide-bgimage" style ="<%= show_slide_bgimage %>">
+			<div class="slide-overlay">
+		<div class="slide-bgcolor" style = "<%= show_slide_bgcolor %>">
+				<h1><%= @slide.title %></h1>
+				<div class="slide-content-flex">
+
+				<% if @slide.content? %>
+					<div class="slide-content">
+						<%= @slide.content.html_safe %>
+					</div>
+				<% end %>
+
+				<% if @slide.image? %>
+					<div class="slide-image">
+						<%= image_tag @slide.image.url %><br>
+						<caption><%= @slide.caption %></caption>
+					</div>
+
+				<% end %>
+
+				<% for @contentmodule in @slide.contentmodules %>
+					<% if @contentmodule.modular_content? %>
+						<div class="slide-content">
+
+							<p><%= simple_format @contentmodule.modular_content.html_safe %></p>
+						</div>
+					<% end %>
+				<% end %>
+
+					<% for @bulleted_list in @slide.bulleted_lists %>
+					<% if @bulleted_list.list? %>
+						<div class="slide-content">
+
+							<ul><%= @bulleted_list.list.html_safe %></ul>
+						</div>
+					<% end %>
+				<% end %>
+
+
+			</div><!--/slide-content-flex-->
+		</div>
+	</div><!--/slide overlay-->
+	</div><!--bgimage-->
+	<br>
+</div><!--slide-container-->
+
+<% end %>
+
+</div>
+<button class="toggle btn btn-default">Full Screen</button>
+<button class="off btn btn-default">Close Screen</button>
+	
+</div><!--/col-md-9-->
+<% if user_signed_in? %>
+
+<div class="col-md-4">
+     <div class="take-notes">
+      <h2>Take Notes</h2>
+      <%= simple_form_for(@note) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-fields">
+        <%= f.input :title, class: 'form-control' %>
+      <%= f.text_area :content, rows: "15", class: 'form-control tinymce' %>
+        <%= tinymce %>  </div>
+    <br>
+    <%= f.label "Pin this Note:" %><br>
+      <%= f.collection_select(:slidedeck_id, @slidedecks.order('created_at ASC'), :id, :title, {:include_blank => "Pin to Presentation"}, {:required => true}) %>
+    <br>
+    <br>
+      <div class="form-actions">
+        <%= f.button :submit, class: 'btn btn-primary'
+ %>
+      </div>
+    <% end %>
+</div>
+
+<% else %>
+<h2>Log into take notes!</h2>
+	<%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+
+<% end %>
+
+<% if current_user.try(:admin?) %>
+	<%= link_to 'Edit', edit_slidedeck_path(@slidedeck) %> |
+	<%= link_to 'Back', slidedecks_path %>
+<% end %>
+
+</div><!--/col-md-3-->
+</div><!--row -->
+<% if user_signed_in? %>
+<br>
+<div class="row notes-slidedeck">
+	<% for @note in @slidedeck.notes.each %>
+	<% if current_user == @note.user %>
+		<% if @note.id? %>
+
+		<div class="col-sm-4">
+			<div class="note-box">
+        <h2><%= @note.title %></h2>
+        <h3><%= @note.created_at.strftime("%m-%d-%Y") %> taken at <%= @note.created_at.strftime("%H:%M %p") %></h3>
+        <div class="links">
+        <%= link_to 'View', @note %> |
+        <%= link_to 'Edit', edit_note_path(@note) %> |
+        <%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div><!--links--><br>
+        <%= truncate @note.content.html_safe, length: 180, :escape => false %><br>
+        <%= link_to '...read more', @note %> 
+
+      
+      </div>
+		</div>
+		<% end %>
+	<% end %>
+<% end %>
+</div>
+<% end %>
+
+<script>
+$('button.toggle').click(function(e){
+    $('#full').toggleClass('fullscreen'); 
+    $("div.slide").addClass("fullscreen-fonts");
+    $('button.toggle').hide()
+    $('button.off').show()
+});
+</script>
+<script>
+$('button.off').click(function(e){
+    $('#full').toggleClass('fullscreen'); 
+    $("div.slide").removeClass("fullscreen-fonts");
+    $('button.off').hide()
+    $('button.toggle').show()
+
+});
+</script>

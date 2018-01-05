@@ -1,0 +1,1 @@
+json.array! @slidedecks, partial: 'slidedecks/slidedeck', as: :slidedeck

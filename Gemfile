@@ -41,6 +41,7 @@ gem "switch_user"
 gem 'sendgrid-ruby'
 gem 'bootstrap-datepicker-rails'
 gem 'american_date'
+gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 
 
 group :production do 

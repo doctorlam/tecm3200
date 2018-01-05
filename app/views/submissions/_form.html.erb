@@ -13,8 +13,8 @@
 
 
 <%= render "#{@submission.current_step}_step", :f => f %>
-<%= f.submit "Back", class: "btn btn-primary", :name => "back_button" unless @submission.first_step? %>
+<%= f.submit "Back", class: "btn btn-primary", :name => "back_button" unless @submission.first_step? %> &nbsp; &nbsp;
 <%= f.submit "Continue", class: "btn btn-primary form-control" unless @submission.last_step? %> 
-<%= f.submit "Submit Assignment", class: "btn btn-primary" unless @submission.first_step? %> 
+<%= f.submit "Submit Assignment", class: "btn btn-green" unless @submission.first_step? %> 
 <% end %>
 

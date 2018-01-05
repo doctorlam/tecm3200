@@ -3,6 +3,7 @@ class SubmissionsController < ApplicationController
       before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
       before_filter :check_user, only: [:edit, :update, :destroy]
       before_filter :authorize_admin, only: [:index, :destroy, :edit]
+      before_filter :user_is_current_user, only: [:show, :edit, :update, :destroy]
 
 
   # GET /submissions
@@ -28,6 +29,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions/1
   # GET /submissions/1.json
   def show
+
   end
 
   # GET /submissions/new
@@ -74,11 +76,13 @@ end
   # PATCH/PUT /submissions/1
   # PATCH/PUT /submissions/1.json
   def update
-
+    
     respond_to do |format|
       if @submission.update(submission_params)
-        format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
-        format.json { render :show, status: :ok, location: @submission }
+        HomeworkMailer.sample_email(@submission.user).deliver
+
+        format.html { redirect_to submissions_path, notice: 'Submission was successfully updated.' }
+        format.json { render :index, status: :ok, location: submissions_path }
       else
         format.html { render :edit }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
@@ -106,7 +110,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:assignment_type, :feedback, :delete_image, :image, :homework_id, :user, :name, {assignment_ids: []}, :assignment, :user_id, :assignment_id, :score, :totalscore, :description, :assignment_id, :document, :attachment)
+      params.require(:submission).permit(:feedback, :delete_image, :image, :homework_id, :user, :name, {assignment_ids: []}, :assignment, :user_id, :assignment_id, :score, :totalscore, :description, :assignment_id, :document)
     end
     def check_user
       if current_user == authorize_admin
@@ -114,4 +118,10 @@ end
 
       end 
     end
+  def user_is_current_user
+    unless current_user == @submission.user or current_user.admin
+      redirect_to(root_url, alert: "You cannot edit this Submission") and return
+    end
+  end
+
 end
