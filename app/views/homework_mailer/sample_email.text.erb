@@ -1,8 +1,16 @@
-Hi <%= @submission_user.name %>
+Hi <%= @user.name %>!
 
-An assignment that you recently submitted has been graded.
+The assignment, <% for assignment in @submission.assignments %><%= assignment.name %><% end %>, has been graded!
 
-Go to the course website to view comments or feedback. 
+You received a <%= @submission.score %> out of <% for assignment in @submission.assignments %> <%= assignment.score %><% end %>
 
-Thanks! 
-Dr. Lam
+Comments:
+   	 <% if @submission.feedback? %>
+ <%= @submission.feedback %>
+   	 <% else %>
+No feedback was provided.
+   	 <% end %>
+
+Go to the <a href="http://tecm3200.herokuapp.com">course website</a> to view all your grades.
+
+Thanks! Dr. Lam

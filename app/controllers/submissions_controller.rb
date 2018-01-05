@@ -79,7 +79,9 @@ end
     
     respond_to do |format|
       if @submission.update(submission_params)
-        HomeworkMailer.sample_email(@submission.user).deliver
+        user = User.find_by_id(@submission.user_id)
+        submission = @submission
+        HomeworkMailer.sample_email(user, submission).deliver_now
 
         format.html { redirect_to submissions_path, notice: 'Submission was successfully updated.' }
         format.json { render :index, status: :ok, location: submissions_path }
