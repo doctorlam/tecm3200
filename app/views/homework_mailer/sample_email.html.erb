@@ -2,9 +2,10 @@
    <h2>Hi <%= @user.name %>!</h2>
    	<p>The assignment, <% for assignment in @submission.assignments %><%= assignment.name %><% end %>, has been graded!
 
+   	<h3>Score</h3>
    	  <p>You received a <%= @submission.score %> out of <% for assignment in @submission.assignments %> <%= assignment.score %><% end %></p>
 
-   	 <p>Comments:</p>
+   	 <h3>Comments:</h3>
    	 <% if @submission.feedback? %>
    	 	<p><%= @submission.feedback %></p>
    	 <% else %>
