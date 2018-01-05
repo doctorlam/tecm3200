@@ -14,7 +14,42 @@
  *= require_self
 *= require commontator/application
 */
-
+.form-container {
+	background: rgba(92,157,150,1);
+background: -moz-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(1%, rgba(92,157,150,1)), color-stop(51%, rgba(133,184,179,0.91)), color-stop(72%, rgba(153,170,202,0.91)), color-stop(100%, rgba(153,170,202,0.9)));
+background: -webkit-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,0.9) 100%);
+background: linear-gradient(135deg, rgba(92,157,150,1) 1%, rgba(133,184,179,1) 51%, rgba(153,170,202,1) 72%, rgba(153,170,202,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c9d96', endColorstr='#99aaca', GradientType=1 );
+	padding-top: 20px;
+	padding-bottom: 20px;
+	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
+	margin-top: -500px;
+	position: absolute;
+	width: 100%;
+}
+.form label {
+	font-weight: 400 !important;
+	font-family: 'Muli';
+}
+.form {
+	width: 450px !important;
+	margin: 0 auto;
+	background: white;
+	padding: 25px;
+	border-radius: 15px;
+}
+.form h2 {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'Muli';
+}
 .filter-box {
 	border: 1px solid black;
 	margin: 5px 0px 20px 0;
@@ -51,8 +86,8 @@ nav {
 	z-index: 100 !important;
 }
 nav img {
-	height: 40px !important;
-	width: 40px !important;
+	height: 35px !important;
+	width: 35px !important;
 }
 nav p {
 	font-size: 0.9rem !important;
@@ -77,11 +112,9 @@ select {
 	background: #6EA59F !important;
 	border: #6EA59F !important;
 	color: white !important;
-	text-transform: uppercase;
 	text-decoration: none;
 	font-size: 1.3rem !important;
-	font-family: 'open sans condensed';
-	letter-spacing: 5px;
+	font-family: 'muli';
 	height: 44px;
 }
 a.btn.btn-green:hover {
@@ -135,7 +168,7 @@ body {
 
 .container-fluid {
 	padding: 0;
-	background: #F0F0F0;
+	background: #FFFFFF;
 }
 
 .container {
@@ -143,7 +176,6 @@ body {
 	margin: 0 auto;
 	margin-top: -40px;
 	margin-bottom: 80px;
-
 }
 
 .content-container {
@@ -179,8 +211,7 @@ nav a, nav a:visited {
 }
 
 .navbar {
-	opacity: 0.9;
-	background: transparent !important;
+	background: rgba(56,56,56, 0.4) !important;
 	border: none !important;
 }
 .navbar-right {
@@ -283,10 +314,11 @@ a.add_fields, a.remove_fields {
   background-size: cover;
 	background-repeat:no-repeat;
 	background-position: center center;
+	margin-bottom: 50px;
 }
 .hero-overlay {
 	height: 500px;
-
+	margin-bottom: 50px;
 background: rgba(92,157,150,0.92);
 background: -moz-linear-gradient(-45deg, rgba(92,157,150,0.92) 1%, rgba(133,184,179,0.91) 51%, rgba(153,170,202,0.91) 72%, rgba(153,170,202,0.9) 100%);
 background: -webkit-gradient(left top, right bottom, color-stop(1%, rgba(92,157,150,0.92)), color-stop(51%, rgba(133,184,179,0.91)), color-stop(72%, rgba(153,170,202,0.91)), color-stop(100%, rgba(153,170,202,0.9)));
