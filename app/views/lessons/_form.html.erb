@@ -95,7 +95,7 @@
      
       <%= f.check_box :delete_document %> Remove <%= @lesson.document.original_filename %>
   <% else %>
-      <%= f.label :document %>
+      <%= f.label :document, "Document 1" %>
       <%= f.file_field :document, :class => "form-control-file", class: "form-control" %>
 
   <% end %>
@@ -104,7 +104,7 @@
 
       <%= f.check_box :delete_image %> Remove <%= @lesson.image.original_filename %>
     <% else %>
-    <%= f.label :image %>
+    <%= f.label :image, "Document 2" %>
     <%= f.file_field :image, :class => "form-control-file", class: "form-control" %>
   <% end %>
   </div>
