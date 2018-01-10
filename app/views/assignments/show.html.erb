@@ -25,11 +25,8 @@
                 <% else %>
                 <li>No Document(s) Attached!</li>
               <% end %>
-		<% if current_user.try(:admin?) %>
-			<br />
-		<% else %>
+		
 			  <%= link_to 'Submit Your Homework', "/submissions/new?assignment=#{@assignment.id}", class: 'btn btn-primary form-control' %>
-		<% end %>
 		<br />
 		</div>
 		<div class="col-md-4 projects-right">
