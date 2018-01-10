@@ -2,6 +2,7 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Homework Assignments</h1>
+
 <div class="filter">
 <%= search_form_for @search do |f| %>
 <label>
@@ -47,7 +48,7 @@
                   <% end %>
               <% if assignment.assignment_type == "Lab" %>
 
-                 <td style ="background: #c0392b !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
+                 <td style ="background: #F07851 !important; font-size: 1.1rem !important; text-align: center; color: white !important" class="lesson_type"><%= link_to assignment.name, assignment %></td>
 
                 <% end %>
          

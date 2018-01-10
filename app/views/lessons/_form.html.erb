@@ -52,22 +52,24 @@
   <% end %>
   <%= link_to_add_fields "Add Reading", f, :readings, class: "btn btn-mini btn-info" %>
 </div>
+
 <div class="third-form-group">
-  <h2>Homework</h2>
-  <%= f.fields_for :homeworks do |builder| %>
-  <%= render 'homework_fields', f:builder %>
-  <% end %>
   
-  <%= link_to_add_fields "Add Homework (not turned in)", f, :homeworks, class: "btn btn-mini btn-info" %>
     <h2>Add Turn-in Assignment</h2>
         <%= hidden_field_tag "lesson[assignment_ids][]", nil %>
         <% Assignment.all.each do |assignment| %>
           <%= check_box_tag "lesson[assignment_ids][]", assignment.id, @lesson.assignment_ids.include?(assignment.id), id: dom_id(assignment) %>
-          <%= label_tag dom_id(assignment), assignment.name %>
+          <%= assignment.assignment_type %> | <%= label_tag dom_id(assignment), assignment.name %> | <%= assignment.deadline %>
           <br />
         <% end %>
     </div>
-
+<div class="fourth-form-group">
+  <h2>Other Homework</h2>
+  <%= f.fields_for :homeworks do |builder| %>
+  <%= render 'homework_fields', f:builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Homework (not turned in)", f, :homeworks, class: "btn btn-mini btn-info" %>
+</div>
   <!-- <div class="fourth-form-group">
       <h2>Takeaways</h2>
       <%= f.fields_for :takeaways do |builder| %>
