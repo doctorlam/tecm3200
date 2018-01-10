@@ -108,6 +108,7 @@ GEM
     execjs (2.7.0)
     filterrific (2.0.5)
       rails (>= 3.1.0)
+    flex-slider-rails (2.6.4.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -263,6 +264,7 @@ DEPENDENCIES
   commontator
   devise
   filterrific
+  flex-slider-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails

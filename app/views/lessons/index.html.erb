@@ -1,16 +1,11 @@
 <div class="container">
-
-<% if current_user.try(:admin?) %>
-<%= link_to 'New Lesson', new_lesson_path, class: "btn btn-default" %>
-<br><br>
-<% end %>
 <div class="filter">
   <%= link_to "Main Schedule", lessons_path, class: 'main-button' %>
   <%= link_to "Lab Schedule", "http://tecm3200.herokuapp.com/lessons?utf8=%E2%9C%93&q%5Blesson_type_cont%5D=Lab&commit=Filter", class: 'lab-button' %>
 </div>
 
 <div class="table-responsive">
-<table class="table table-bordered table-lessons">
+<table class="table table-bordered table-lessons table-striped">
   <thead>
     <tr>
       <th><%= sort_link @search, :lesson_type, "Class Type" %></th>
@@ -66,6 +61,9 @@
 </table>
 
 </div>
-
+<% if current_user.try(:admin?) %>
+<%= link_to 'New Lesson', new_lesson_path, class: "btn btn-green" %>
+<br><br>
+<% end %>
 
 </div>

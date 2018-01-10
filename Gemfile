@@ -45,6 +45,7 @@ gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 gem 'bxslider-rails'
 gem "jquery-slick-rails"
 gem 'material_icons'
+gem 'flex-slider-rails'
 
 
 group :production do 

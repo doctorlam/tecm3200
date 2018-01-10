@@ -11,9 +11,9 @@
  * file per style scope.
  *
  *= require_tree .
+  *= require slick
+  *= require slick-theme
  *= require_self
-*= require commontator/application
-
 */
 
 /* =======NOTES AND SLIDES ========*/
@@ -587,8 +587,53 @@ p {
 
 a.add_fields, a.remove_fields {
 	float: right !important;
-	display: inline-block;
+	display: block;
+	border-radius: 5px;
+
+
 }
+a.add_fields {
+	border: 1px red green;
+	background: #6EA59F;
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+	margin: 10px 0 10px 10px;
+	width: 150px;
+	text-align: center;
+
+}
+a.remove_fields {
+	border: 1px red solid;
+	background: red;
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+	margin: 10px 0 10px 0;
+}
+a.remove_fields:hover, a.add_fields:hover {
+	background: white !important;
+	color: black;
+}
+
+tr.flex {
+	display: flex;
+	flex-direction: row;
+}
+td.form-content {
+	width: 90%;
+}
+td.center {
+	background: gray;
+	margin-right: 20px;
+	display: flex;
+	flex-direction:row;
+}
+td.center a {
+	align-self: center;
+	width: 50px;
+}
+
 
 .form-group h2, .form-group h3 {
 	text-align: center;

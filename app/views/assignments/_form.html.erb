@@ -10,15 +10,7 @@
       </ul>
     </div>
   <% end %>
-    <div class="form-group">
-        <%= hidden_field_tag "assignment[lesson_ids][]", nil %>
-        <% Lesson.all.each do |lesson| %>
-          <%= check_box_tag "assignment[lesson_ids][]", lesson.id, @assignment.lesson_ids.include?(lesson.id), id: dom_id(lesson) %>
-          <%= label_tag dom_id(lesson), lesson.name %>
-          [<%= label_tag dom_id(lesson), lesson.date %>]
-          <br />
-        <% end %>
-    </div>
+   
     <div class="second-form-group">
     <h2>Choose Assignment Type</h2>
       <%= f.label :assignment_type, "Main", :value => "true"  %>
@@ -58,11 +50,11 @@
      <%= f.text_field :deadline, class: "form-control", :data => {:provide => "datepicker"} %>
   </div>
   <div class="field">
-    <%= f.label :fake_score, 'Fake Points' %><br>
+    <%= f.label :fake_score, 'Points (not graded)' %><br>
     <%= f.number_field :fake_score, class: "form-control" %>
   </div>
    <div class="field">
-    <%= f.label :score, 'Points' %><br>
+    <%= f.label :score, 'Points (graded)' %><br>
     <%= f.number_field :score, class: "form-control" %>
   </div>
 
@@ -80,6 +72,16 @@
 
   <% end %>
   </div>
+   <div class="second-form-group">
+    <h2>Create a turn-in assignment</h2>
+        <%= hidden_field_tag "assignment[lesson_ids][]", nil %>
+        <% Lesson.all.each do |lesson| %>
+          <%= check_box_tag "assignment[lesson_ids][]", lesson.id, @assignment.lesson_ids.include?(lesson.id), id: dom_id(lesson) %>
+          <%= label_tag dom_id(lesson), lesson.name %>
+          [<%= label_tag dom_id(lesson), lesson.date %>]
+          <br />
+        <% end %>
+    </div>
   
 
   <div class="actions">
