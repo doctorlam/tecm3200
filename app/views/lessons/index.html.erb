@@ -52,8 +52,14 @@
           <% end %>
 </td>
         <% if current_user.try(:admin?) %>
-        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to edit_lesson_path(lesson) do %>
+            <i class="material-icons">edit</i>
+            <% end %>
+
+        </td>
+        <td><%= link_to lesson, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="material-icons">delete_forever</i>
+                      <% end %></td>
         <% end %>
       </tr>
     <% end %>

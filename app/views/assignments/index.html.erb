@@ -5,31 +5,31 @@
 
 <div class="filter">
 <%= search_form_for @search do |f| %>
-<label>
-<%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();" %>
-  Open (Displayed by default)
-</label>
-  &nbsp
-&nbsp
-  <label>
+<ul>
+  <li><label>
+  <%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();" %>
+    Open (Displayed by default)
+  </label></li>
+   
+    <li><label>
   <%= f.radio_button :status_cont, "Upcoming", onclick: "$(this).closest('form').submit();" %>
   Upcoming
-</label>
-  &nbsp
-&nbsp
- <label>
-  <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();" %>
-  Graded or Grading
-</label>
-   
-  <br>
-   <br><br>
+      </label></li>
 
+  <li><label>
+      <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();" %>
+      Graded or Grading
+    </label></li>
+
+</ul>
+   
+ <br>
 
    </div>
 
 <% end %>
-  <table class="table table-striped table-responsive">
+<div class="table-responsive">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
@@ -57,15 +57,16 @@
           <td class="wider">
             <%= f.number_field :score, class: "form-control" %> / <%= assignment.fake_score %></td>
           <td>
-            <%= f.label :status, "Open" %>
-          <%= f.radio_button :status, "Open" %>
-          <br>
-
-            <%= f.label :status, "Upcoming"  %>
-            <%= f.radio_button :status, "Upcoming" %>
-            <br>
-           <%= f.label :status, "Closed"  %>
-            <%= f.radio_button :status, "Closed" %>
+          <ul>
+              <li><%= f.label :status, "Open" %>
+              <%= f.radio_button :status, "Open" %></li>
+              
+              <li><%= f.label :status, "Upcoming"  %>
+              <%= f.radio_button :status, "Upcoming" %></li>
+          
+              <li><%= f.label :status, "Closed"  %>
+              <%= f.radio_button :status, "Closed" %></li>
+          </ul>
              </td>
              <td>
               <div class="actions">
@@ -73,19 +74,27 @@
               </div>
             </td>
             <% end %>
-          <td><%= link_to 'Show', assignment %></td>
+          <td><%= link_to assignment do %>
+              <i class="material-icons">pageview</i>
+          <% end %></td>
         <% if current_user.try(:admin?) %>
-          <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-          <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to edit_assignment_path(assignment) do %>
+              <i class="material-icons">edit</i>
+              <% end %>
+
+          </td>
+          <td><%= link_to assignment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="material-icons">delete_forever</i>
+                      <% end %></td>
         <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
-
+</div><!--/table-responsive-->
   <br>
   <% if current_user.try(:admin?) %>
 
-  <%= link_to 'New Assignment', new_assignment_path %>
+  <%= link_to 'New Assignment', new_assignment_path, class: 'btn btn-green' %>
 <% end %>
 </div>

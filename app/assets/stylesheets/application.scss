@@ -264,6 +264,11 @@ select.pin-dropdown {
 	margin-bottom: 15px;
 }
 
+.filter li {
+	list-style-type:none;
+	margin-bottom: 10px;
+}
+
 .main-button {
 	background: #6FA59F;
 	padding: 25px;
@@ -401,9 +406,9 @@ select {
 	border: #6EA59F !important;
 	color: white !important;
 	text-decoration: none;
-	font-size: 1.3rem !important;
+	font-size: 1.1rem !important;
 	font-family: 'muli';
-	height: 44px;
+	
 }
 a.btn.btn-green:hover {
 	background: gray !important;

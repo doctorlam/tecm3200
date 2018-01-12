@@ -1,6 +1,6 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<h3><%= link_to "All grades", usergrades_path, class: "btn btn-green form-control" %>
+<h3><%= link_to "View All Grades", usergrades_path, class: "btn btn-green" %>
 <h1>Admin Gradebook</h1>
 <div class="col-md-4">
  <div class="filter-box">
@@ -13,7 +13,7 @@
    <% end %>
    <br><br>
 <div class="actions">
-  <%= f.submit "Filter", class: "form-control btn-primary" %><br>
+  <%= f.submit "Filter", class: " btn btn-green" %><br>
 
 </div>
 
@@ -33,7 +33,7 @@
    <% end %>
    <br><br>
 <div class="actions">
-  <%= f.submit "Filter", class: "form-control btn-primary" %><br>
+  <%= f.submit "Filter", class: " btn btn-green" %><br>
 
 </div>
 
@@ -52,7 +52,7 @@
    <% end %>
    <br><br>
 <div class="actions">
-  <%= f.submit "Filter", class: "form-control btn-primary" %><br>
+  <%= f.submit "Filter", class: " btn btn-green" %><br>
 
 </div>
 
@@ -60,7 +60,7 @@
 </div>
 </div>
 <br >
-<%= link_to 'View Graded Submissions', pages_graded_path, class: "btn btn-primary" %>
+<%= link_to 'Switch to Graded Submissions', pages_graded_path, class: "btn btn-green" %>
 
 
 <div class="table-responsive">
@@ -100,8 +100,11 @@
               <td style = "color: red !important">Not graded yet (<%= assignment.fake_score %> points</td>
             <% end %>
            
-            <td><%= link_to 'Grade', submission %></td>
-                    <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Grade', submission, class: 'btn btn-green' %></td>
+                    <td><%= link_to submission, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="material-icons">delete_forever</i>
+                      <% end %>
+                    </td>
 
           </tr>
         <% end %>
