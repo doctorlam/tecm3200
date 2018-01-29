@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.slick
 //= require bootstrap
+//= require list.min.js
 //= require turbolinks
 //= require tinymce
 //= require filterrific/filterrific-jquery
