@@ -354,7 +354,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c9d96', end
 	font-family: 'Muli';
 	font-weight: 700;
 	font-size: 1rem;
+}
 
+nav.gradebook {
+	background: #ecf0f1;
+	display: flex;
+	align-items: center;
+	height: 100px;
+}
+nav.gradebook a, nav.gradebook a:visited {
+	text-transform: none !important;
+	font-size: 1.25rem;
+	color: gray !important;
+}
+nav.gradebook a.active {
+	color: #2980b9 !important;
+	font-size: 1.25rem;
+	font-weight: bold;
+	text-decoration: underline;
+}
+nav.gradbook ul {
+	list-stye-type:none;
+}
+nav.gradebook li {
+	display:inline;
+	margin-right: 60px;
 }
 .tutorial-content p {
 	font-size: 20px !important;

@@ -1,13 +1,17 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<h3><%= link_to "All grades", usergrades_path, class: "btn btn-green form-control" %>
+
 <br>
 <br>
-<%= link_to 'Back to Ungraded', submissions_path, class: "btn btn-primary" %>
-<h1>Graded Assignments</h1>
-
-
-
+<nav class="gradebook">
+  <ul>
+    <li><%=link_to "Ungraded Submissions", submissions_path %></li>
+    <li><%= link_to 'Graded Submissions', pages_graded_path , class: "active"%></li>
+    <li><%= link_to "Finalized Gradebook", usergrades_path %></li> 
+  </ul>
+</nav> 
+<br>
+<br>
 <div id="all-grades">
   <input class="search" placeholder="Search Assignments" />
     <br>

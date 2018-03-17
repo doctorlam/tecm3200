@@ -1,7 +1,6 @@
 <div class="container">
-<div id="users">
- 
 
+<div id="users">
 
   		<div class="list">
 			<% @usergrades.each do |user| %>
@@ -28,3 +27,17 @@
 		</div>
 </div>
 </div>
+</div><!--/all-grades-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  
+<script>
+
+var options = {
+  valueNames: [ 'name' ]
+
+
+};
+
+var userList = new List('all-grades', options);
+</script>   

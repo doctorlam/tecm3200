@@ -1,6 +1,17 @@
 <div class="container">
 <div id="users">
-
+<nav class="gradebook">
+  <ul>
+    <li><%=link_to "Ungraded Submissions", submissions_path %></li>
+    <li><%= link_to 'Graded Submissions', pages_graded_path%></li>
+    <li><%= link_to "Finalized Gradebook", usergrades_path, class: "active" %></li> 
+  </ul>
+</nav>
+<br>
+<div id="all-grades">
+  <input class="search" placeholder="Search Student" />
+    <br>
+    <br>
 
   		<div class="list">
 			<% @usergrades.each do |user| %>
