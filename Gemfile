@@ -47,7 +47,13 @@ gem "jquery-slick-rails"
 gem 'material_icons'
 gem 'flex-slider-rails'
 
-
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+  gem 'sqlite3'
+ gem "letter_opener"
+      gem 'letter_opener_web'
+end
 group :production do 
 	gem 'pg'
 	gem 'rails_12factor'
@@ -63,13 +69,7 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'sqlite3'
- gem "letter_opener"
-      gem 'letter_opener_web'
-end
+
 
 group :development do
   gem 'web-console', '~> 2.0'
