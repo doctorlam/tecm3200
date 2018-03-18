@@ -361,12 +361,11 @@ nav.gradebook {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: sticky;
-	height: 280px;
+	position: fixed;
+	min-height: 280px;
 	flex-direction: column;
 	padding: 20px;
-	  position: -webkit-sticky;
-  	bottom: 50%; /* required */
+  	top: 200px;
 }
 nav.gradebook ul, nav.gradbook li {
 	width: 100%;
@@ -377,7 +376,7 @@ nav.gradebook a, nav.gradebook a:visited {
 	font-size: 1.25rem;
 	color: gray !important;
 }
-nav.gradebook a.active, input[type="radio"]:checked+label
+nav.gradebook a.active
  {
 	color: white !important;
 	font-size: 1.25rem !important;
@@ -397,7 +396,7 @@ nav.gradbook ul {
 nav.gradebook li {
 	display:block;
 	margin-bottom: 30px;
-	text-align: right;
+	text-align: center;
 }
 .tutorial-content p {
 	font-size: 20px !important;
@@ -1047,6 +1046,9 @@ code {
 }
 .padding-right {
 	padding: 0 0 0 0;
+}
+nav.gradebook {
+	position: initial;
 }
 
 }

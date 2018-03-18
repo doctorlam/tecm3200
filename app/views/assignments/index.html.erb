@@ -6,18 +6,18 @@
 
     <%= search_form_for @search do |f| %>
     <ul>
-      <li><label>
-      <%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();" %>
+      <li><label class="label-for-check">
+      <%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();", class: "check-with-label" %>
         Open (Displayed by default)
       </label></li>
        
-        <li><label>
-      <%= f.radio_button :status_cont, "Upcoming", onclick: "$(this).closest('form').submit();" %>
+        <li><label class="label-for-check">
+      <%= f.radio_button :status_cont, "Upcoming", onclick: "$(this).closest('form').submit();", class: "check-with-label" %>
       Upcoming
           </label></li>
 
-      <li><label>
-          <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();" %>
+      <li><label class="label-for-check">
+          <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();", class: "check-with-label" %>
           Graded or Grading
         </label></li>
 
