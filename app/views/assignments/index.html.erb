@@ -1,33 +1,37 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4">
+    <nav class="gradebook">
 
-  <h1>Homework Assignments</h1>
-
-<div class="filter">
-<%= search_form_for @search do |f| %>
-<ul>
-  <li><label>
-  <%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();" %>
-    Open (Displayed by default)
-  </label></li>
-   
-    <li><label>
-  <%= f.radio_button :status_cont, "Upcoming", onclick: "$(this).closest('form').submit();" %>
-  Upcoming
+    <%= search_form_for @search do |f| %>
+    <ul>
+      <li><label>
+      <%= f.radio_button :status_cont, "Open", checked: "checked", onclick: "$(this).closest('form').submit();" %>
+        Open (Displayed by default)
       </label></li>
+       
+        <li><label>
+      <%= f.radio_button :status_cont, "Upcoming", onclick: "$(this).closest('form').submit();" %>
+      Upcoming
+          </label></li>
 
-  <li><label>
-      <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();" %>
-      Graded or Grading
-    </label></li>
+      <li><label>
+          <%= f.radio_button :status_cont, "Closed", onclick: "$(this).closest('form').submit();" %>
+          Graded or Grading
+        </label></li>
 
-</ul>
-   
- <br>
+    </ul>
+       
+     <br>
 
-   </div>
+       </nav>
+    </div><!--/col-md-4-->
 
 <% end %>
+<div class="col-md-8">
+  <h1>Homework Assignments</h1>
+
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -91,7 +95,9 @@
       <% end %>
     </tbody>
   </table>
-</div><!--/table-responsive-->
+    </div><!--/table-responsive-->
+  </div><!--/col-md-8-->
+</div><!--/row-->
   <br>
   <% if current_user.try(:admin?) %>
 

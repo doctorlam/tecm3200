@@ -365,6 +365,8 @@ nav.gradebook {
 	height: 280px;
 	flex-direction: column;
 	padding: 20px;
+	  position: -webkit-sticky;
+  	top: 0; /* required */
 }
 nav.gradebook ul, nav.gradbook li {
 	width: 100%;
@@ -375,11 +377,12 @@ nav.gradebook a, nav.gradebook a:visited {
 	font-size: 1.25rem;
 	color: gray !important;
 }
-nav.gradebook a.active {
+nav.gradebook a.active, input[type="radio"]:checked+label
+ {
 	color: white !important;
-	font-size: 1.25rem;
+	font-size: 1.25rem !important;
 	font-weight: bold;
-	background: #2980b9 ;
+	background: #2980b9 !important;
 	width: 100%;
 	padding: 15px;
 }
