@@ -1,22 +1,10 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<nav class="gradebook">
-  <ul>
-    <li><%=link_to "Ungraded Submissions", submissions_path, class: "active" %></li>
-    <li><%= link_to 'Graded Submissions', pages_graded_path %></li>
-    <li><%= link_to "Finalized Gradebook", usergrades_path %></li> 
-  </ul>
 
-
-</nav>
-  <br>
-<br>
 
 <div id= "all-grades">
 
-  <input class="search" placeholder="Search!" />
-    <br>
-    <br>
+ 
 <!-- <div class="row">
 <div class="col-md-4">
  <div class="filter-box">
@@ -77,6 +65,24 @@
 </div>
 <br >
 </div><!--/row--> 
+<div class="row">
+  <div class="col-md-4">
+
+    <nav class="gradebook">
+      <input class="search form-control" placeholder="Search!" />
+    <br>
+    <br>
+  <ul>
+    <li><%=link_to "Ungraded Submissions", submissions_path, class: "active" %></li>
+    <li><%= link_to 'Graded Submissions', pages_graded_path %></li>
+    <li><%= link_to "Finalized Gradebook", usergrades_path %></li> 
+  </ul>
+
+
+</nav>
+  </div><!--/col-md-4-->
+<div class="col-md-8">
+  <h1>Ungraded Submissions</h1>
 <div class="table-responsive">
     <table class="table table-striped table-condensed table-hover">
       <thead>
@@ -126,6 +132,8 @@
       </tbody>
     </table>
   </div><!--responsive table close-->
+</div><!--/col-md-8-->
+</div><!--/row-->
 </div>
 
 <br>  

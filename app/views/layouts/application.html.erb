@@ -25,8 +25,14 @@
 <body>
 
 <div class="container-fluid">
+<% if current_page?(submissions_path) or current_page?(usergrades_path) or current_page?(pages_graded_path) or current_page?(assignments_path) %>
+  <%= render 'layouts/header2'  %>
 
-<%= render 'layouts/header' %>
+<% else %>
+
+  <%= render 'layouts/header'  %>
+<% end %>
+
  <% if flash[:alert] -%>
 <div class="alert alert-success">
   <%= flash[:alert] %>
