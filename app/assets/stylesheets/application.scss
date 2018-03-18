@@ -366,7 +366,7 @@ nav.gradebook {
 	flex-direction: column;
 	padding: 20px;
 	  position: -webkit-sticky;
-  	top: 0; /* required */
+  	bottom: 50%; /* required */
 }
 nav.gradebook ul, nav.gradbook li {
 	width: 100%;
