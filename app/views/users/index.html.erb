@@ -8,7 +8,9 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone Number</th>
-                <th>Last Signed in?</th>            
+              <% if current_user.admin? %>
+                <th>Last Signed in?</th>   
+              <% end %>         
             
               </tr>
             </thead>
@@ -24,7 +26,10 @@
                 		<td><%= user.name %> <%=user.last_name %></td>
                 		<td><%= user.email %></td>
                 		<td><%= number_to_phone(user.phonenumber) %></td>
+                  <% if current_user.admin? %>
+
                     <td><%= user.last_sign_in_at.strftime("%B %d, %Y") %></td>
+                  <% end %>
                   
                 	</tr>
 
