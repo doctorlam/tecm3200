@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all.reorder(due: :asc)
-
   end
 
   # GET /projects/1
